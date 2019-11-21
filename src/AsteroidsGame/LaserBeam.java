@@ -1,6 +1,7 @@
 package AsteroidsGame;
 
 import comp127graphics.Line;
+import comp127graphics.Point;
 
 import java.awt.*;
 
@@ -23,5 +24,15 @@ public class LaserBeam extends Line {
         this.setStartPosition(shipShape.getShipFront());
     }
 
+//private double calculateAngle(){
+//        Point bottom = shipShape.getShipBottom();
+//        Point front = shipShape.getShipFront();
+//
+//}
 
+//    private double calculateEndPoint(){
+//        Point bottom = shipShape.getShipBottom();
+//        Point front = shipShape.getShipFront();
+//
+//    }
 }

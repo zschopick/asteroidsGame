@@ -10,7 +10,7 @@ import java.util.Random;
 public class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
-    private int AsteroidMax = 15;
+    private int AsteroidMax;
     private Asteroids asteroid;
     private Random rand;
 
@@ -39,10 +39,13 @@ public class AsteroidsManager {
     }
 
 
-
+    /**
+     * Removes the asteroid from the canvas and the list and then calls to create a new asteroid.
+     */
     public void destroyAsteroid(){
         canvas.remove(asteroid);
         AsteroidList.remove(asteroid);
+        createAsteroid();
     }
 
 
@@ -52,6 +55,12 @@ public class AsteroidsManager {
             if (a == object){
                 destroyAsteroid();
             }
+        }
+    }
+
+    public void moveAsteroids(){
+        for (Asteroids a: AsteroidList){
+            a.updatePosition(canvas);
         }
     }
 }

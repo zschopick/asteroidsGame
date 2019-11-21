@@ -21,7 +21,7 @@ public class LaserBeam extends Line {
         super(x1, y1, x2, y2);
         super.setStrokeColor(Color.green);
         super.setStrokeWidth(3);
-        this.setStartPosition(shipShape.getShipFront());
+//        this.setStartPosition(shipShape.getShipFront());
     }
 
 //private double calculateAngle(){

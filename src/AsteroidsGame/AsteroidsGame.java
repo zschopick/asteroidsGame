@@ -2,6 +2,8 @@ package AsteroidsGame;
 
 import comp127graphics.CanvasWindow;
 
+import java.awt.*;
+
 public class AsteroidsGame {
     CanvasWindow canvas;
     AsteroidsManager manager;
@@ -10,14 +12,21 @@ public class AsteroidsGame {
 
     public AsteroidsGame(){
         canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
-        manager = new AsteroidsManager();
+        manager = new AsteroidsManager(canvas);
         run();
+        canvas.setBackground(Color.black);
     }
 
     public void run(){
+        manager.createAsteroid();
+
        //TODO: Finish this.
     }
 
+
+    public static void main(String[] args){
+        new AsteroidsGame();
+    }
 
 
 

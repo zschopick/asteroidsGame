@@ -14,13 +14,12 @@ public class Asteroids extends Ellipse{
      *
      * @param x      position
      * @param y      position
-     * @param width  of the bounding rectangle
-     * @param height of the bounding rectangle
      */
-    public Asteroids(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public Asteroids(double x, double y) {
+        super(x, y, 100, 100);
         setStrokeColor(Color.white);
     }
+
 
 
 }

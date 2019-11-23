@@ -1,51 +1,57 @@
 package AsteroidsGame;
 
-
-import comp127graphics.Fillable;
-import comp127graphics.Line;
+import comp127graphics.Path;
+import comp127graphics.Point;
 
 import java.awt.*;
 
+public class Ship extends Path {
+    private double x0;
+    private double y0;
+    private double x1;
+    private double y1;
+    private double x2;
+    private double y2;
 
-public class Ship implements Fillable {
-
-    Line line1;
-    Line line2;
-    Line line3;
-    private Paint fillColor;
-    private boolean isFilled;
-
-
-    public Ship(int x1, int y1, int x2, int y2, int x3, int y3){
-        line1 = new Line(x1,y1,x2,y2);
-        line2 = new Line(x2, y2, x3, y3);
-        line3 = new Line(x3, y3, x1, y1);
-        fillColor = Color.RED;
-        isFilled = true;
-
+    public Ship(double x0, double y0, double x1, double y1, double x2, double y2) {
+        this.x0 = x0;
+        this.y0 = y0;
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+        Ship shipShape = Path.makeTriangle(300, 350, 275, 450, 325, 450);
+        this.setFillColor(Color.white);
     }
 
 
-
-
-
-    @Override
-    public Paint getFillColor() {
-        return null;
+    Point getShipFront() {
+        return new Point(x0, y0);
     }
 
-    @Override
-    public void setFillColor(Paint fillColor) {
-
+    double getShipBottomX() {
+        return (x1 + x2) / 2;
     }
 
-    @Override
-    public boolean isFilled() {
-        return false;
+    double getShipBottomY() {
+        return (y1 + y2) / 2;
     }
 
-    @Override
-    public void setFilled(boolean filled) {
-
+    double getX0() {
+        return x0;
     }
+
+    public void setX0(double x0) {
+        this.x0 = x0;
+    }
+
+    double getY0() {
+        return y0;
+    }
+
+    public void setY0(double y0) {
+        this.y0 = y0;
+    }
+
+
 }

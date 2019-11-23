@@ -28,8 +28,8 @@ public class BeamBlast extends Ellipse {
     }
 
     private double calculateSlope(){
-        double x0 = shipShape.x0;
-        double y0 = shipShape.y0;
+        double x0 = shipShape.getX0();
+        double y0 = shipShape.getY0();
         double x3 = shipShape.getShipBottomX();
         double y3 = shipShape.getShipBottomY();
 
@@ -37,7 +37,7 @@ public class BeamBlast extends Ellipse {
     }
 
     private boolean xDirectionPositive(){
-        double x0 = shipShape.x0;
+        double x0 = shipShape.getX0();
         double x3 = shipShape.getShipBottomX();
         return x3-x0 > 0;
     }
@@ -50,7 +50,7 @@ public class BeamBlast extends Ellipse {
         else {
             x--;
         }
-        y = slope * x + shipShape.y0;
+        y = slope * x + shipShape.getY0();
         this.setPosition(x,y);
     }
 

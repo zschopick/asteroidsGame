@@ -20,7 +20,7 @@ public class Ship extends Path {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
-        Ship shipShape = Path.makeTriangle(300, 350, 275, 450, 325, 450);
+//        Ship shipShape = Path.makeTriangle(300, 350, 275, 450, 325, 450);
         this.setFillColor(Color.white);
     }
 

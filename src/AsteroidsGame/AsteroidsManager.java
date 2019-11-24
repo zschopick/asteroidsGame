@@ -10,7 +10,7 @@ import java.util.Random;
 public class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
-    private int AsteroidMax;
+    private int AsteroidMax= 15;
     private Asteroids asteroid;
     private Random rand;
 

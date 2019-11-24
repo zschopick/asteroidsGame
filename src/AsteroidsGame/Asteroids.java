@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class Asteroids extends Ellipse{
     private final double asteroidRadius = 100;
-    private double dX = 1.6;
-    private double dY = 1.6;
+    private double dX = .1;
+    private double dY = .1;
     private double xPos;
     private double yPos;
 
@@ -28,21 +28,21 @@ public class Asteroids extends Ellipse{
 
     public void updatePosition(CanvasWindow canvas){
         if (getY() > canvas.getHeight()){
-            setCenter(getX(), canvas.getHeight() - canvas.getHeight());
+            setPosition(getX(), 0);
         }
         if (getY() < 0 ){
-            setCenter(getX(), canvas.getHeight());
+            setPosition(getX(), canvas.getHeight());
         }
         if (getX()> canvas.getWidth()){
-            setCenter(0, getY());
+            setPosition(0, getY());
         }
         if (getX() < 0){
-            setCenter(canvas.getWidth(), getY());
+            setPosition(canvas.getWidth(), getY());
         }
 
-        xPos = getX() +dX;
+        xPos = getX() + dX;
         yPos = getY() + dY;
-        setCenter(xPos, yPos);
+        setPosition(xPos, yPos);
     }
 
 

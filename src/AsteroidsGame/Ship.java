@@ -17,6 +17,7 @@ public class Ship extends Path {
     private double mX;
     private double mY;
 
+
     public Ship(double x0, double y0, double x1, double y1, double x2, double y2) {
         makeTriangle(x0, y0, x1, y1, x2, y2);
         this.x0 = x0;
@@ -66,10 +67,19 @@ public void updateHealth(){
 //        this.setPosition(position.getX(),y);
 //}
 public void setCurrentPosition(MouseMotionEvent evt){
-//    mX =evt.getX();//mouse X
-//    mY =evt.getY();//mouse Y
-//
-//    this.setPosition(position.getX(),y);
-//}
+    mX =evt.getPosition().getX();//mouse X
+    mY =evt.getPosition().getY();//mouse Y
+    double Xdist =mX-this.x0; //Get x distance from mouse to ship
+    double Ydist =mY-this.y0; //Get y distance from mouse to ship
+    double radAngle = Math.atan(Ydist/Xdist); //Use atan to calculate the angle
+//    if(mX >= this.x0){
+//        littleY = Math.sin(radAngle)*15;
+//        littleX = Math.cos(radAngle)*15;
+//    }else{
+//        littleY = Math.sin(radAngle)*-15;
+//        littleX = Math.cos(radAngle)*-15;
+//    }
+//    this.setPosition();
+}
 
-}}
+}

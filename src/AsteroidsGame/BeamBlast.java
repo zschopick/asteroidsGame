@@ -2,6 +2,7 @@ package AsteroidsGame;
 
 import comp127graphics.CanvasWindow;
 import comp127graphics.Ellipse;
+import comp127graphics.events.MouseButtonEvent;
 
 import java.awt.*;
 
@@ -56,5 +57,11 @@ public class BeamBlast extends Ellipse {
 
     private void removeBeam(){
         canvas.remove(this);
+    }
+
+    private void blast(MouseButtonEvent evt){
+        double posX = evt.getPosition().getX();
+        double posY = evt.getPosition().getY();
+
     }
 }

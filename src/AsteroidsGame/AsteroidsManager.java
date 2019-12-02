@@ -64,10 +64,14 @@ class AsteroidsManager {
         }
     }
 
-    void testHit(double x, double y) {
+    boolean testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
             destroyAsteroid((Asteroids) location);
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }

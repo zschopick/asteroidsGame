@@ -8,6 +8,7 @@ public class AsteroidsGame {
     CanvasWindow canvas;
     AsteroidsManager manager;
     Ship ship;
+    HealthBar healthBar;
     private final int CANVAS_WIDTH = 600;
     private final int CANVAS_HEIGHT = 800;
     private Asteroids asteroid;
@@ -15,6 +16,7 @@ public class AsteroidsGame {
     public AsteroidsGame(){
         canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
         manager = new AsteroidsManager(canvas);
+        healthBar = new HealthBar(ship);
         run();
         canvas.onMouseMove(event -> ship.setCurrentPosition(event));
         canvas.setBackground(Color.black);
@@ -27,6 +29,8 @@ public class AsteroidsGame {
         canvas.animate(() ->
                 manager.moveAsteroids());
         ship.testForDestruction();
+        canvas.add(healthBar.getGraphics());
+        //healthBar.update();       //Having trouble adding to the canva, this method gives an error
        //TODO: Finish this.
     }
 

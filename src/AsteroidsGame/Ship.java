@@ -28,7 +28,8 @@ public class Ship extends Path {
 
 
 
-    public Ship(double x0, double y0, double x1, double y1, double x2, double y2, AsteroidsManager asteroidsManager) {
+    public Ship(double x0, double y0, double x1, double y1, double x2, double y2,
+                AsteroidsManager asteroidsManager) {
       //  makeTriangle(x0, y0, x1, y1, x2, y2);
         this.x0 = x0;
         this.y0 = y0;
@@ -79,16 +80,33 @@ public class Ship extends Path {
     }
 
 public void updateHealth(){
-
+    if (testForDestruction()) {
+        health -= 20;
+    }
+}
+int getHealth(){
+        updateHealth();
+        return health;
 }
 
 //needs work
 
-void testForDestruction(){
-    asteroidsManager.testHit(195, 345);
-    asteroidsManager.testHit(195, 455);
-    asteroidsManager.testHit(405, 345);
-    asteroidsManager.testHit(140, 455);
+boolean testForDestruction(){
+    if(asteroidsManager.testHit(195, 345)){
+        return true;
+    }
+    if(asteroidsManager.testHit(195, 455)){
+        return true;
+    }
+    if(asteroidsManager.testHit(405, 345)){
+        return true;
+    }
+    if(asteroidsManager.testHit(140, 455)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 //public void setCurrentPosition(comp127graphics.Point position){

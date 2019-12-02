@@ -1,10 +1,13 @@
 package AsteroidsGame;
 
+import comp127graphics.CanvasWindow;
 import comp127graphics.Path;
 import comp127graphics.Point;
 import comp127graphics.events.MouseMotionEvent;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ship extends Path {
     private double x0;
@@ -16,6 +19,11 @@ public class Ship extends Path {
     private int health = 100;
     private double mX;
     private double mY;
+    private List<Point> points = new ArrayList<>();
+    private Point point1;
+    private Point point2;
+    private Point point3;
+
 
 
     public Ship(double x0, double y0, double x1, double y1, double x2, double y2) {
@@ -27,7 +35,18 @@ public class Ship extends Path {
         this.x2 = x2;
         this.y2 = y2;
         this.setFillColor(Color.white);
+        point1 = new Point(x0, y0);
+        points.add(point1);
+        point2 = new Point(x1, y1);
+        points.add(point2);
+        point3 = new Point(x2, y2);
+        points.add(point3);
+        setPosition(x0, y0);
+        setVertices(points);
+
         //for some reason the ship won't be added to the canvas
+
+//        Got It to Work!!! There were some extra things we needed to add in the th Path class in order for it to work.
     }
 
     Point getShipFront() {

@@ -23,10 +23,11 @@ public class Ship extends Path {
     private Point point1;
     private Point point2;
     private Point point3;
+    private AsteroidsManager asteroidsManager;
 
 
 
-    public Ship(double x0, double y0, double x1, double y1, double x2, double y2) {
+    public Ship(double x0, double y0, double x1, double y1, double x2, double y2, AsteroidsManager asteroidsManager) {
       //  makeTriangle(x0, y0, x1, y1, x2, y2);
         this.x0 = x0;
         this.y0 = y0;
@@ -34,6 +35,7 @@ public class Ship extends Path {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.asteroidsManager = asteroidsManager;
         this.setFillColor(Color.white);
         point1 = new Point(x0, y0);
         points.add(point1);
@@ -44,10 +46,8 @@ public class Ship extends Path {
         setPosition(x0, y0);
         setVertices(points);
 
-        //for some reason the ship won't be added to the canvas
-
-//        Got It to Work!!! There were some extra things we needed to add in the th Path class in order for it to work.
     }
+
 
     Point getShipFront() {
         return new Point(x0, y0);
@@ -80,8 +80,6 @@ public class Ship extends Path {
 public void updateHealth(){
 
 }
-
-
 
 
 //public void setCurrentPosition(comp127graphics.Point position){

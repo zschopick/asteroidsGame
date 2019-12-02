@@ -24,6 +24,8 @@ public class AsteroidsGame {
         manager.createAsteroid();
         createShip();
         canvas.add(ship);
+//        manager.testHit(300,400);
+
         canvas.animate(() ->
                 manager.moveAsteroids());
        //TODO: Finish this.
@@ -38,7 +40,7 @@ public class AsteroidsGame {
      * Creates a ship at the center of the canvas.
      */
     public void createShip(){
-        ship = new Ship(300, 350, 275, 450, 325, 450);
+        ship = new Ship(300, 350, 275, 450, 325, 450, manager);
     }
 
 }

@@ -2,6 +2,7 @@ package AsteroidsGame;
 
 import comp127graphics.CanvasWindow;
 import comp127graphics.GraphicsObject;
+import comp127graphics.Point;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,27 +50,32 @@ public class AsteroidsManager {
     }
 
 
+//No longer needed because we specify which Asteroid is at location of ship.
+//    public void asteroidAtPosition(GraphicsObject object){
+//        for (Asteroids a: AsteroidList){
+//            if (a == object){
+//                destroyAsteroid(a);
+//            }
+//        }
+//    }
 
-    public void asteroidAtPosition(GraphicsObject object){
+    public void moveAsteroids(){
         for (Asteroids a: AsteroidList){
-            if (a == object){
+            a.updatePosition(canvas);
+            if(a.getCenter().equals(new Point(300, 400))){
                 destroyAsteroid(a);
             }
         }
     }
 
-    public void moveAsteroids(){
-        for (Asteroids a: AsteroidList){
-            a.updatePosition(canvas);
-        }
-    }
+
     
-    public boolean testHit(double x, double y) {
-        GraphicsObject location = canvas.getElementAt(x, y);
-        if (location instanceof Asteroids) {
-            destroyAsteroid((Asteroids) location);
-            return true;
-        }
-        return false;
-    }
+//    public boolean testHit(double x, double y) {
+//        GraphicsObject location = canvas.getElementAt(x, y);
+//        if (location instanceof Asteroids) {
+//            destroyAsteroid((Asteroids) location);
+//            return true;
+//        }
+//        return false;
+//    }
 }

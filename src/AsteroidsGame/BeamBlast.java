@@ -43,17 +43,17 @@ public class BeamBlast extends Ellipse {
         return x3-x0 > 0;
     }
 
-    void updateBeamPosition() {
-        double slope = calculateSlope();
-        if (xDirectionPositive()){
-            x++;
-        }
-        else {
-            x--;
-        }
-        y = slope * x + shipShape.getY0();
-        this.setPosition(x,y);
-    }
+//    void updateBeamPosition() {
+//        double slope = calculateSlope();
+//        if (xDirectionPositive()){
+//            x++;
+//        }
+//        else {
+//            x--;
+//        }
+//        y = slope * x + shipShape.getY0();
+//        this.setPosition(x,y);
+//    }
 
     private void removeBeam(){
         canvas.remove(this);
@@ -62,6 +62,16 @@ public class BeamBlast extends Ellipse {
     private void blast(MouseButtonEvent evt){
         double posX = evt.getPosition().getX();
         double posY = evt.getPosition().getY();
+        double slope = (posX-shipShape.getX0())/(posY-shipShape.getY0());
+        if (xDirectionPositive()){
+            x++;
+        }
+        else {
+            x--;
+        }
+        y = slope * x + shipShape.getY0();
+        this.setPosition(x,y);
+
 
     }
 }

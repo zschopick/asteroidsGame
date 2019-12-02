@@ -70,12 +70,12 @@ public class AsteroidsManager {
 
 
     
-//    public boolean testHit(double x, double y) {
-//        GraphicsObject location = canvas.getElementAt(x, y);
-//        if (location instanceof Asteroids) {
-//            destroyAsteroid((Asteroids) location);
-//            return true;
-//        }
-//        return false;
-//    }
+    public boolean testHit(double x, double y) {
+        GraphicsObject location = canvas.getElementAt(x, y);
+        if (location instanceof Asteroids) {
+            destroyAsteroid((Asteroids) location);
+            return true;
+        }
+        return false;
+    }
 }

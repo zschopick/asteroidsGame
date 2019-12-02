@@ -81,6 +81,15 @@ public void updateHealth(){
 
 }
 
+//needs work
+    //check (195,345),(405,345),(195,455),(405,455).
+void testForDestruction(){
+    if (asteroidsManager.testHit(195, 345)) {
+        Asteroids astr = getElementAt(195,345);
+        asteroidsManager.destroyAsteroid(astr);
+
+    }
+}
 
 //public void setCurrentPosition(comp127graphics.Point position){
 //

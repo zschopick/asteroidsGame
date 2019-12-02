@@ -1,6 +1,7 @@
 package AsteroidsGame;
 
 import comp127graphics.CanvasWindow;
+import comp127graphics.GraphicsObject;
 import comp127graphics.Path;
 import comp127graphics.Point;
 import comp127graphics.events.MouseMotionEvent;
@@ -82,13 +83,12 @@ public void updateHealth(){
 }
 
 //needs work
-    //check (195,345),(405,345),(195,455),(405,455).
-void testForDestruction(){
-    if (asteroidsManager.testHit(195, 345)) {
-        Asteroids astr = getElementAt(195,345);
-        asteroidsManager.destroyAsteroid(astr);
 
-    }
+void testForDestruction(){
+    asteroidsManager.testHit(195, 345);
+    asteroidsManager.testHit(195, 455);
+    asteroidsManager.testHit(405, 345);
+    asteroidsManager.testHit(140, 455);
 }
 
 //public void setCurrentPosition(comp127graphics.Point position){

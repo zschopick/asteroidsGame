@@ -24,10 +24,9 @@ public class AsteroidsGame {
         manager.createAsteroid();
         createShip();
         canvas.add(ship);
-//        manager.testHit(300,400);
-
         canvas.animate(() ->
                 manager.moveAsteroids());
+        ship.testForDestruction();
        //TODO: Finish this.
     }
 

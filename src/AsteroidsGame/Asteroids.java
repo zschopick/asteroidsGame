@@ -23,11 +23,13 @@ public class Asteroids extends Ellipse{
      * @param y      position
      */
     public Asteroids(double x, double y) {
-        super(x, y, 100, 100);
+        super(x, y, 100, 100); //use rand.nextInt() to get different sized asteroids
         setStrokeColor(Color.white);
-        rand = new Random();
-        setdX(rand.nextDouble());
-        setdY(rand.nextDouble());
+//        rand = new Random();
+        setdX(Math.random()*2-1);   //picks random double between -1 and 1
+        setdY(Math.random()*2-1);
+        //setdX(rand.nextDouble());
+       // setdY(rand.nextDouble());
 
     }
 

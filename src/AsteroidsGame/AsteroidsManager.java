@@ -42,9 +42,9 @@ public class AsteroidsManager {
     /**
      * Removes the asteroid from the canvas and the list and then calls to create a new asteroid.
      */
-    public void destroyAsteroid(){
-        canvas.remove(asteroid);
-        AsteroidList.remove(asteroid);
+    public void destroyAsteroid(Asteroids astr){
+        canvas.remove(astr);
+        AsteroidList.remove(astr);
         createAsteroid();
     }
 
@@ -53,7 +53,7 @@ public class AsteroidsManager {
     public void asteroidAtPosition(GraphicsObject object){
         for (Asteroids a: AsteroidList){
             if (a == object){
-                destroyAsteroid();
+                destroyAsteroid(a);
             }
         }
     }
@@ -62,5 +62,14 @@ public class AsteroidsManager {
         for (Asteroids a: AsteroidList){
             a.updatePosition(canvas);
         }
+    }
+    
+    public boolean testHit(double x, double y) {
+        GraphicsObject location = canvas.getElementAt(x, y);
+        if (location instanceof Asteroids) {
+            destroyAsteroid((Asteroids) location);
+            return true;
+        }
+        return false;
     }
 }

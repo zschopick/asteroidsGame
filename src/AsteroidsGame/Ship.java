@@ -27,7 +27,7 @@ public class Ship extends Path {
 
 
     public Ship(double x0, double y0, double x1, double y1, double x2, double y2) {
-        makeTriangle(x0, y0, x1, y1, x2, y2);
+      //  makeTriangle(x0, y0, x1, y1, x2, y2);
         this.x0 = x0;
         this.y0 = y0;
         this.x1 = x1;
@@ -80,6 +80,9 @@ public class Ship extends Path {
 public void updateHealth(){
 
 }
+
+
+
 
 //public void setCurrentPosition(comp127graphics.Point position){
 //

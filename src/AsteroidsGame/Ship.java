@@ -127,6 +127,11 @@ public void setCurrentPosition(MouseMotionEvent evt){
 //        littleX = Math.cos(radAngle)*-15;
 //    }
 //    this.setPosition();
+
+
+//    setPosition(mX, mY);
+
+
 }
 
 }

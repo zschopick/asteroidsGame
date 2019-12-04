@@ -13,12 +13,15 @@ class AsteroidsManager {
     private int AsteroidMax= 15;
     private Asteroids asteroid;
     private Random rand;
-
+    private List<Double> sizeList = new ArrayList<>();
 
     AsteroidsManager(CanvasWindow canvas){
         this.canvas = canvas;
         AsteroidList = new ArrayList<>();
         rand = new Random();
+        sizeList.add(25.0);
+        sizeList.add(50.0);
+        sizeList.add(100.0);
 
     }
 
@@ -31,7 +34,9 @@ class AsteroidsManager {
             while(AsteroidList.size() < AsteroidMax){
                 double asteroidX = rand.nextInt(canvas.getWidth());
                 double asteroidY = rand.nextInt(canvas.getHeight());
-                asteroid = new Asteroids(asteroidX, asteroidY);
+                double width = sizeList.get(rand.nextInt(3));
+
+                asteroid = new Asteroids(asteroidX, asteroidY,width);
                 canvas.add(asteroid);
                 AsteroidList.add(asteroid);
             }

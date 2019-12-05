@@ -43,7 +43,8 @@ public class AsteroidsGame {
      * Creates a ship at the center of the canvas.
      */
     public void createShip(){
-        ship = new Ship(300, 350, 275, 450, 325, 450, manager);
+        ship = new Ship(300, 350, 275, 450, 325, 450, manager, 100);
+
     }
 
 }

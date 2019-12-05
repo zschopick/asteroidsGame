@@ -1,8 +1,6 @@
 package AsteroidsGame;
 
-import comp127graphics.CanvasWindow;
-import comp127graphics.GraphicsObject;
-import comp127graphics.Path;
+import comp127graphics.*;
 import comp127graphics.Point;
 import comp127graphics.events.MouseMotionEvent;
 
@@ -29,7 +27,7 @@ public class Ship extends Path {
 
 
     public Ship(double x0, double y0, double x1, double y1, double x2, double y2,
-                AsteroidsManager asteroidsManager) {
+                AsteroidsManager asteroidsManager, int health) {
       //  makeTriangle(x0, y0, x1, y1, x2, y2);
         this.x0 = x0;
         this.y0 = y0;
@@ -37,6 +35,7 @@ public class Ship extends Path {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.health = health;
         this.asteroidsManager = asteroidsManager;
         this.setFillColor(Color.white);
         point1 = new Point(x0, y0);
@@ -47,8 +46,17 @@ public class Ship extends Path {
         points.add(point3);
         setPosition(x0, y0);
         setVertices(points);
-
     }
+
+    //Start of a circular Ship
+//public Ship(double x0, double y0,AsteroidsManager asteroidsManager, int health) {
+//    super(x0,y0,70,50);
+//    this.x0 = x0;
+//    this.y0 = y0;
+//    this.health = health;
+//    this.asteroidsManager = asteroidsManager;
+//    setPosition(x0, y0);
+//}
 
 
     Point getShipFront() {
@@ -133,5 +141,4 @@ public void setCurrentPosition(MouseMotionEvent evt){
 
 
 }
-
 }

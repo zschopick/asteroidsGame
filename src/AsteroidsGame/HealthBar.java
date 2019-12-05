@@ -21,7 +21,7 @@ public class HealthBar {
     }
 
     void update() {
-        label.setText("" + ship.getHealth());
+        label.setText("Health: " + ship.getHealth());
     }
 
     private void updateLayout() {

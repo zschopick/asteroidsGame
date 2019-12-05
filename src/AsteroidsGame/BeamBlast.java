@@ -12,6 +12,8 @@ public class BeamBlast extends Ellipse {
     private double x;
     private double y;
     public double radius;
+    public static final double centerX = 300;
+    public static final double centerY = 400;
     /**
      * Creates an ellipse whose upper left is at (x,y), and which has the specified width and height.
      * @param x      position

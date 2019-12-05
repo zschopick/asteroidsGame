@@ -29,7 +29,7 @@ public class AsteroidsGame {
         healthBar = new HealthBar(ship);
         canvas.animate(() -> {
             manager.moveAsteroids();
-            ship.updateHealth();
+            ship.testForDestruction();
             healthBar.update(); });
         canvas.add(healthBar.getGraphics());
              //Having trouble adding to the canva, this method gives an error

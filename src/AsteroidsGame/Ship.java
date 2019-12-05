@@ -28,48 +28,73 @@ public class Ship extends Ellipse {
         setCenter(X, Y);
     }
 
-    public void updateHealth() {
-        if (testForDestruction()) {
-            health -= 20;
+    private void updateHealth(double width) {
+        if (width == 100){
+        health -= 20;
         }
+        if(width == 50){
+            health -= 10;
+        }
+        if(width == 25){
+            health -= 5;
+        }
+
     }
 
     int getHealth() {
         return health;
     }
 
-    //update test points
     boolean testForDestruction() {
-        if (asteroidsManager.testHit(X - WIDTH - 1, Y)) {
+        double left = asteroidsManager.testHit(X - WIDTH - 1, Y);
+        if (left > 0) {
             //tests left side
+            updateHealth(left);
             return true;
         }
-        if (asteroidsManager.testHit(X + WIDTH + 1, Y)) {
+        double right = asteroidsManager.testHit(X + WIDTH + 1, Y);
+        if (right > 0) {
             //tests right side
+            updateHealth(right);
             return true;
         }
-        if (asteroidsManager.testHit(X, Y - HEIGHT - 1)) {
+        double top = asteroidsManager.testHit(X, Y - HEIGHT - 1);
+        if (top > 0) {
             //tests top side
+            updateHealth(top);
             return true;
         }
-        if (asteroidsManager.testHit(X, Y + HEIGHT + 1)) {
+        double bottom = asteroidsManager.testHit(X, Y + HEIGHT + 1);
+        if (bottom > 0) {
             //tests bottom side
+            updateHealth(bottom);
             return true;
         }
-        if (asteroidsManager.testHit(this.getX(), this.getY())) {
+        double topLeft = asteroidsManager.testHit(this.getX(), this.getY());
+        if (topLeft > 0) {
             //tests top left corner
+            updateHealth(topLeft);
             return true;
         }
-        if (asteroidsManager.testHit(this.getX() + WIDTH, this.getY())) {
+        double topRight = asteroidsManager.testHit(this.getX() + WIDTH, this.getY());
+        if (topRight > 0) {
             //tests top right corner
+            updateHealth(topRight);
             return true;
         }
-        if (asteroidsManager.testHit(this.getX(), this.getY() + HEIGHT)) {
+        double bottomLeft = asteroidsManager.testHit(this.getX(), this.getY() + HEIGHT);
+        if (bottomLeft > 0) {
             //tests bottom left corner
+            updateHealth(bottomLeft);
             return true;
         }
-        //tests bottom right corner
-        return asteroidsManager.testHit(this.getX() + WIDTH, this.getY() + HEIGHT);
+        double bottomRight = asteroidsManager.testHit(this.getX() + WIDTH, this.getY() + HEIGHT);
+        if (bottomRight > 0) {
+            //tests bottom right corner
+            updateHealth(bottomRight);
+            return true;
+        }
+        return false;
     }
 
 //public void setCurrentPosition(comp127graphics.Point position){

@@ -3,8 +3,11 @@ package AsteroidsGame;
 import comp127graphics.CanvasWindow;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class AsteroidsGame {
+public class AsteroidsGame implements MouseListener, MouseMotionListener {
     CanvasWindow canvas;
     AsteroidsManager manager;
     Ship ship;
@@ -12,6 +15,7 @@ public class AsteroidsGame {
     private final int CANVAS_WIDTH = 600;
     private final int CANVAS_HEIGHT = 800;
     private Asteroids asteroid;
+    private Beam beam;
 
     public AsteroidsGame(){
         canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -20,6 +24,11 @@ public class AsteroidsGame {
         run();
         canvas.onMouseMove(event -> ship.setCurrentPosition(event));
         canvas.setBackground(Color.black);
+        canvas.onClick(event -> {
+            beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+            canvas.add(beam);
+            //canvas.remove(beam);
+        });
     }
 
     public void run(){
@@ -49,4 +58,39 @@ public class AsteroidsGame {
 
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        Beam beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+        canvas.add(beam);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
 }

@@ -24,11 +24,11 @@ public class ScoreBar {
     }
 
     void update() {
-        //label.setText("Score: " + manager.getScore());
+        label.setText("Score: " + manager.getScore());
     }
 
     private void updateLayout() {
-        label.setCenter(300, 50);
+        label.setCenter(400, 50);
     }
 
     GraphicsObject getGraphics() {

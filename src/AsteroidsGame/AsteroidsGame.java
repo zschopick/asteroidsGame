@@ -12,6 +12,7 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
     AsteroidsManager manager;
     Ship ship;
     HealthBar healthBar;
+    ScoreBar scoreBar;
     private final int CANVAS_WIDTH = 600;
     private final int CANVAS_HEIGHT = 800;
     private Asteroids asteroid;
@@ -19,8 +20,8 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
 
     public AsteroidsGame(){
         canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
-        manager = new AsteroidsManager(canvas);
-        healthBar = new HealthBar(ship);
+        manager = new AsteroidsManager(canvas, 0);
+        scoreBar = new ScoreBar(manager);
         run();
         canvas.onMouseMove(event -> ship.setCurrentPosition(event));
         canvas.setBackground(Color.black);
@@ -38,10 +39,11 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
         healthBar = new HealthBar(ship);
         canvas.animate(() -> {
             manager.moveAsteroids();
-            ship.testForDestruction();
-            healthBar.update(); });
+            ship.shipDestruction();
+            healthBar.update();
+            scoreBar.update();});
         canvas.add(healthBar.getGraphics());
-             //Having trouble adding to the canva, this method gives an error
+        canvas.add(scoreBar.getGraphics());
        //TODO: Finish this.
     }
 

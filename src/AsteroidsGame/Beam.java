@@ -44,7 +44,7 @@ public class Beam extends Line {
 //    }
 //
 //    public double getEndY(){
-//        canvas.onClick(event -> event.getPosition().getY());
+//    canvas.onClick(event -> event.getPosition().getY());
 //    }
 
 //    public void shootBeam(CanvasWindow canvas){

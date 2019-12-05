@@ -14,9 +14,11 @@ class AsteroidsManager {
     private Asteroids asteroid;
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
+    private int score;
 
-    AsteroidsManager(CanvasWindow canvas){
+    AsteroidsManager(CanvasWindow canvas, int score){
         this.canvas = canvas;
+        this.score = score;
         AsteroidList = new ArrayList<>();
         rand = new Random();
         sizeList.add(25.0);
@@ -68,5 +70,9 @@ class AsteroidsManager {
         else{
             return -1;
         }
+    }
+
+    public double getScore(){
+        return score;
     }
 }

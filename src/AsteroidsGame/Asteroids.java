@@ -69,9 +69,10 @@ public class Asteroids extends Ellipse{
         return dY;
     }
 
-//    public double getSize(){
-//        return this.width;
-//    }
+    @Override
+    public double getWidth() {
+        return super.getWidth();
+    }
 }
 
 

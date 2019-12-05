@@ -31,7 +31,6 @@ public class Ship extends Ellipse {
     public void updateHealth() {
         if (testForDestruction()) {
             health -= 20;
-            System.out.println("remainging health: " + health);
         }
     }
 

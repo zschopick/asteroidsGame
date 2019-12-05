@@ -5,6 +5,8 @@ import comp127graphics.GraphicsGroup;
 import comp127graphics.GraphicsObject;
 import comp127graphics.GraphicsText;
 
+import java.awt.*;
+
 public class HealthBar {
 
     private GraphicsGroup group;
@@ -15,7 +17,8 @@ public class HealthBar {
         this.ship = ship;
         group = new GraphicsGroup();
         label = new GraphicsText();
-        label.setFont(FontStyle.BOLD, 100);
+        label.setFont(FontStyle.BOLD, 30);
+        label.setFillColor(Color.white);
         group.add(label);
         updateLayout();
     }
@@ -25,7 +28,7 @@ public class HealthBar {
     }
 
     private void updateLayout() {
-        label.setCenter(20, 20);
+        label.setCenter(20, 50);
     }
 
     GraphicsObject getGraphics() {

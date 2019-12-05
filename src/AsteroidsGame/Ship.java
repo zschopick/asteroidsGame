@@ -8,114 +8,70 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ship extends Path {
-    private double x0;
-    private double y0;
-    private double x1;
-    private double y1;
-    private double x2;
-    private double y2;
-    private int health = 100;
+public class Ship extends Ellipse {
+    private final double X;
+    private final double Y;
+    private int health;
     private double mX;
     private double mY;
-    private List<Point> points = new ArrayList<>();
-    private Point point1;
-    private Point point2;
-    private Point point3;
+    static final double WIDTH = 70;
+    static final double HEIGHT = 50;
     private AsteroidsManager asteroidsManager;
 
-
-
-    public Ship(double x0, double y0, double x1, double y1, double x2, double y2,
-                AsteroidsManager asteroidsManager, int health) {
-      //  makeTriangle(x0, y0, x1, y1, x2, y2);
-        this.x0 = x0;
-        this.y0 = y0;
-        this.x1 = x1;
-        this.y1 = y1;
-        this.x2 = x2;
-        this.y2 = y2;
+    public Ship(double X, double Y, AsteroidsManager asteroidsManager, int health) {
+        super(X, Y, 70, 50);
+        this.X = X;
+        this.Y = Y;
+        this.setFillColor(Color.white);
         this.health = health;
         this.asteroidsManager = asteroidsManager;
-        this.setFillColor(Color.white);
-        point1 = new Point(x0, y0);
-        points.add(point1);
-        point2 = new Point(x1, y1);
-        points.add(point2);
-        point3 = new Point(x2, y2);
-        points.add(point3);
-        setPosition(x0, y0);
-        setVertices(points);
+        setCenter(X, Y);
     }
 
-    //Start of a circular Ship
-//public Ship(double x0, double y0,AsteroidsManager asteroidsManager, int health) {
-//    super(x0,y0,70,50);
-//    this.x0 = x0;
-//    this.y0 = y0;
-//    this.health = health;
-//    this.asteroidsManager = asteroidsManager;
-//    setPosition(x0, y0);
-//}
-
-
-    Point getShipFront() {
-        return new Point(x0, y0);
+    public void updateHealth() {
+        if (testForDestruction()) {
+            health -= 20;
+            System.out.println("remainging health: " + health);
+        }
     }
 
-    double getShipBottomX() {
-        return (x1 + x2) / 2;
-    }
-
-    double getShipBottomY() {
-        return (y1 + y2) / 2;
-    }
-
-    double getX0() {
-        return x0;
-    }
-
-    public void setX0(double x0) {
-        this.x0 = x0;
-    }
-
-    double getY0() {
-        return y0;
-    }
-
-    public void setY0(double y0) {
-        this.y0 = y0;
-    }
-
-public void updateHealth(){
-    if (testForDestruction()) {
-        health -= 20;
-    }
-}
-int getHealth(){
-        updateHealth();
+    int getHealth() {
         return health;
-}
+    }
 
-//needs work
-
-boolean testForDestruction(){
-    if(asteroidsManager.testHit(195, 345)){
-        return true;
+    //update test points
+    boolean testForDestruction() {
+        if (asteroidsManager.testHit(X - WIDTH - 1, Y)) {
+            //tests left side
+            return true;
+        }
+        if (asteroidsManager.testHit(X + WIDTH + 1, Y)) {
+            //tests right side
+            return true;
+        }
+        if (asteroidsManager.testHit(X, Y - HEIGHT - 1)) {
+            //tests top side
+            return true;
+        }
+        if (asteroidsManager.testHit(X, Y + HEIGHT + 1)) {
+            //tests bottom side
+            return true;
+        }
+        if (asteroidsManager.testHit(this.getX(), this.getY())) {
+            //tests top left corner
+            return true;
+        }
+        if (asteroidsManager.testHit(this.getX() + WIDTH, this.getY())) {
+            //tests top right corner
+            return true;
+        }
+        if (asteroidsManager.testHit(this.getX(), this.getY() + HEIGHT)) {
+            //tests bottom left corner
+            return true;
+        }
+        //tests bottom right corner
+        return asteroidsManager.testHit(this.getX() + WIDTH, this.getY() + HEIGHT);
     }
-    if(asteroidsManager.testHit(195, 455)){
-        return true;
-    }
-    if(asteroidsManager.testHit(405, 345)){
-        return true;
-    }
-    if(asteroidsManager.testHit(140, 455)){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
 
 //public void setCurrentPosition(comp127graphics.Point position){
 //
@@ -124,19 +80,9 @@ boolean testForDestruction(){
 public void setCurrentPosition(MouseMotionEvent evt){
     mX =evt.getPosition().getX();//mouse X
     mY =evt.getPosition().getY();//mouse Y
-    double Xdist =mX-this.x0; //Get x distance from mouse to ship
-    double Ydist =mY-this.y0; //Get y distance from mouse to ship
-    double radAngle = Math.atan(Ydist/Xdist); //Use atan to calculate the angle
-//    if(mX >= this.x0){
-//        littleY = Math.sin(radAngle)*15;
-//        littleX = Math.cos(radAngle)*15;
-//    }else{
-//        littleY = Math.sin(radAngle)*-15;
-//        littleX = Math.cos(radAngle)*-15;
-//    }
-//    this.setPosition();
-
-
+//    double Xdist =mX-this.x0; //Get x distance from mouse to ship
+//    double Ydist =mY-this.y0; //Get y distance from mouse to ship
+//    double radAngle = Math.atan(Ydist/Xdist); //Use atan to calculate the angle
 //    setPosition(mX, mY);
 
 

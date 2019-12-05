@@ -26,11 +26,13 @@ public class AsteroidsGame {
         manager.createAsteroid();
         createShip();
         canvas.add(ship);
-        canvas.animate(() ->
-                manager.moveAsteroids());
-        ship.testForDestruction();
+        healthBar = new HealthBar(ship);
+        canvas.animate(() -> {
+            manager.moveAsteroids();
+            ship.updateHealth();
+            healthBar.update(); });
         canvas.add(healthBar.getGraphics());
-        //healthBar.update();       //Having trouble adding to the canva, this method gives an error
+             //Having trouble adding to the canva, this method gives an error
        //TODO: Finish this.
     }
 
@@ -43,7 +45,7 @@ public class AsteroidsGame {
      * Creates a ship at the center of the canvas.
      */
     public void createShip(){
-        ship = new Ship(300, 350, 275, 450, 325, 450, manager, 100);
+        ship = new Ship(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2,  manager, 100);
 
     }
 

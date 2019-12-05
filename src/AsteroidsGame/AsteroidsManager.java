@@ -53,16 +53,6 @@ class AsteroidsManager {
         createAsteroid();
     }
 
-
-//No longer needed because we specify which Asteroid is at location of ship.
-//    public void asteroidAtPosition(GraphicsObject object){
-//        for (Asteroids a: AsteroidList){
-//            if (a == object){
-//                destroyAsteroid(a);
-//            }
-//        }
-//    }
-
     void moveAsteroids(){
         for (Asteroids a: AsteroidList){
             a.updatePosition(canvas);

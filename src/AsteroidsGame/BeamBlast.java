@@ -27,23 +27,20 @@ public class BeamBlast extends Ellipse {
         this.setFillColor(Color.green);
         this.shipShape = shipShape;
         this.canvas = canvas;
-        this.setPosition(shipShape.getShipFront());
+        this.setPosition(centerX,centerY);
     }
 
-    private double calculateSlope(){
-        double x0 = shipShape.getX0();
-        double y0 = shipShape.getY0();
-        double x3 = shipShape.getShipBottomX();
-        double y3 = shipShape.getShipBottomY();
-
-        return (x3-x0)/(y3-y0);
-    }
-
-    private boolean xDirectionPositive(){
-        double x0 = shipShape.getX0();
-        double x3 = shipShape.getShipBottomX();
-        return x3-x0 > 0;
-    }
+//    private double calculateSlope(){
+//        double x3 = shipShape.getShipBottomX();
+//        double y3 = shipShape.getShipBottomY();
+//
+//        return (x3-centerX)/(y3-centerY);
+//    }
+//
+//    private boolean xDirectionPositive(){
+//        double x3 = shipShape.getShipBottomX();
+//        return x3-centerX > 0;
+//    }
 
 //    void updateBeamPosition() {
 //        double slope = calculateSlope();
@@ -61,19 +58,19 @@ public class BeamBlast extends Ellipse {
         canvas.remove(this);
     }
 
-    private void blast(MouseButtonEvent evt){
-        double posX = evt.getPosition().getX();
-        double posY = evt.getPosition().getY();
-        double slope = (posX-shipShape.getX0())/(posY-shipShape.getY0());
-        if (xDirectionPositive()){
-            x++;
-        }
-        else {
-            x--;
-        }
-        y = slope * x + shipShape.getY0();
-        this.setPosition(x,y);
-
-
-    }
+//    private void blast(MouseButtonEvent evt){
+//        double posX = evt.getPosition().getX();
+//        double posY = evt.getPosition().getY();
+//        double slope = (posX-centerX)/(posY-centerY);
+//        if (xDirectionPositive()){
+//            x++;
+//        }
+//        else {
+//            x--;
+//        }
+//        y = slope * x + centerY;
+//        this.setPosition(x,y);
+//
+//
+//    }
 }

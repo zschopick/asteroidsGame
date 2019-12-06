@@ -22,7 +22,8 @@ public class Ship extends Ellipse {
         super(X, Y, 70, 50);
         this.X = X;
         this.Y = Y;
-        this.setFillColor(Color.white);
+        this.setFillColor(Color.CYAN);
+        this.setStrokeColor(Color.BLUE);
         this.health = health;
         this.asteroidsManager = asteroidsManager;
         setCenter(X, Y);

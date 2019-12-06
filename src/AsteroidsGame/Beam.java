@@ -39,21 +39,4 @@ public class Beam extends Line {
 
 
 
-//    public double getEndX(){
-//        canvas.onClick(event -> event.getPosition().getX());
-//    }
-//
-//    public double getEndY(){
-//    canvas.onClick(event -> event.getPosition().getY());
-//    }
 
-//    public void shootBeam(CanvasWindow canvas){
-//       canvas.onClick(() -> this.draw((shipShape.getX(), shipShape.getY(), MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY()));
-//
-//
-//    }
-//
-//    public void createBeam(){
-//
-//    }
-//}

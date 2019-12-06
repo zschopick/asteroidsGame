@@ -25,11 +25,7 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
         run();
         canvas.onMouseMove(event -> ship.setCurrentPosition(event));
         canvas.setBackground(Color.black);
-        canvas.onClick(event -> {
-            beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
-            canvas.add(beam);
-            //canvas.remove(beam);
-        });
+
     }
 
     public void run(){
@@ -41,7 +37,17 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
             manager.moveAsteroids();
             ship.shipDestruction();
             healthBar.update();
-            scoreBar.update();});
+            scoreBar.update();
+            });
+        canvas.onClick(event -> {
+            beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+            canvas.add(beam);
+            manager.testHit(beam.getX2(), beam.getY2());
+
+//            canvas.remove(beam);
+        });
+
+
         canvas.add(healthBar.getGraphics());
         canvas.add(scoreBar.getGraphics());
        //TODO: Finish this.

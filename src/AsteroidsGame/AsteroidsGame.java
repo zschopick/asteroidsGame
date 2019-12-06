@@ -23,7 +23,6 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
         manager = new AsteroidsManager(canvas, 0);
         scoreBar = new ScoreBar(manager);
         run();
-        canvas.onMouseMove(event -> ship.setCurrentPosition(event));
         canvas.setBackground(Color.black);
 
     }

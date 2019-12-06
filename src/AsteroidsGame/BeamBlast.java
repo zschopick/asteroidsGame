@@ -40,7 +40,7 @@ public class BeamBlast extends Ellipse {
 //    private boolean xDirectionPositive(){
 //        double x3 = shipShape.getShipBottomX();
 //        return x3-centerX > 0;
-//    }
+   // }
 
 //    void updateBeamPosition() {
 //        double slope = calculateSlope();
@@ -50,7 +50,7 @@ public class BeamBlast extends Ellipse {
 //        else {
 //            x--;
 //        }
-//        y = slope * x + shipShape.getY0();
+//        y = slope * x + shipShape.getY();
 //        this.setPosition(x,y);
 //    }
 
@@ -73,4 +73,6 @@ public class BeamBlast extends Ellipse {
 //
 //
 //    }
+
+
 }

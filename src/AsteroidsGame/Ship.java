@@ -97,18 +97,4 @@ public class Ship extends Ellipse {
         return false;
     }
 
-//public void setCurrentPosition(comp127graphics.Point position){
-//
-//        this.setPosition(position.getX(),y);
-//}
-public void setCurrentPosition(MouseMotionEvent evt){
-    mX =evt.getPosition().getX();//mouse X
-    mY =evt.getPosition().getY();//mouse Y
-//    double Xdist =mX-this.x0; //Get x distance from mouse to ship
-//    double Ydist =mY-this.y0; //Get y distance from mouse to ship
-//    double radAngle = Math.atan(Ydist/Xdist); //Use atan to calculate the angle
-//    setPosition(mX, mY);
-
-
-}
 }

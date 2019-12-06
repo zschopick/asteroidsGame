@@ -75,4 +75,17 @@ class AsteroidsManager {
     public double getScore(){
         return score;
     }
+
+    private void updateScore(double width) {
+        if (width == 100){
+            score += 100;
+        }
+        if(width == 50){
+            score += 500;
+        }
+        if(width == 25){
+            score = 1000;
+        }
+
+    }
 }

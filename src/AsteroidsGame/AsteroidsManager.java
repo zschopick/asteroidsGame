@@ -37,12 +37,24 @@ class AsteroidsManager {
                 double asteroidX = rand.nextInt(canvas.getWidth());
                 double asteroidY = rand.nextInt(canvas.getHeight());
                 double width = sizeList.get(rand.nextInt(3));
+//                testHit(asteroidX, asteroidY);
 
                 asteroid = new Asteroids(asteroidX, asteroidY,width);
                 canvas.add(asteroid);
                 AsteroidList.add(asteroid);
+                testHit(asteroidX, asteroidY);
             }
         }
+    }
+
+    /**
+     *
+     */
+    public void createSplitAsteroid(double width, double x, double y){
+                asteroid = new Asteroids(x, y, width/2);
+
+                canvas.add(asteroid);
+                AsteroidList.add(asteroid);
     }
 
 
@@ -64,6 +76,11 @@ class AsteroidsManager {
     double testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
+            if (((Asteroids) location).getWidth() == 100){
+                split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
+            }else if (((Asteroids) location).getWidth() == 50){
+                split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
+            }
             destroyAsteroid((Asteroids) location);
             return ((Asteroids) location).getWidth();
         }
@@ -74,5 +91,13 @@ class AsteroidsManager {
 
     public double getScore(){
         return score;
+    }
+
+    public void split(double width, double x, double y){
+        if (width == 100) {
+            createSplitAsteroid(width, x, y);
+        }else if(width == 50){
+            createSplitAsteroid(width, x, y);
+        }
     }
 }

@@ -34,11 +34,16 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
         canvas.add(ship);
         healthBar = new HealthBar(ship);
         canvas.animate(() -> {
-            manager.moveAsteroids();
-            ship.shipDestruction();
-            healthBar.update();
-            scoreBar.update();
+            if(ship.getHealth()>0){
+                manager.moveAsteroids();
+                ship.shipDestruction();
+                healthBar.update();
+                scoreBar.update();}
+            else{
+                canvas.closeWindow();
+            }
             });
+
         canvas.onMouseDown(event -> {
             beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
             canvas.add(beam);

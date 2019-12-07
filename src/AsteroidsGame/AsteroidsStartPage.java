@@ -2,7 +2,7 @@ package AsteroidsGame;
 
 import comp127graphics.*;
 
-public class AsteroidsStartScreen {
+public class AsteroidsStartPage {
     CanvasWindow startCanvas;
     private final int CANVAS_WIDTH = 600;
     private final int CANVAS_HEIGHT = 800;
@@ -12,7 +12,7 @@ public class AsteroidsStartScreen {
     private GraphicsText description;
     private Image asteroidImage;
 
-    public AsteroidsStartScreen(){
+    public AsteroidsStartPage(){
         group = new GraphicsGroup();
 
         asteroidImage = new Image(CANVAS_WIDTH*.4,CANVAS_HEIGHT*.3, "condition-icons/sunny.png");
@@ -32,15 +32,15 @@ public class AsteroidsStartScreen {
         updateLayout();
     }
 
-    public void update(WeatherData data) {
-        asteroidImage.setImagePath("condition-icons/sunny.png");
-        String sunrise = FormattingHelpers.TIME_OF_DAY.format(data.getCurrentConditions().getSunriseTime());
-        String sunset = FormattingHelpers.TIME_OF_DAY.format(data.getCurrentConditions().getSunsetTime());
-        gameTitle.setText("ASTEROIDS");
-        description.setText("This game...");
-
-        updateLayout();
-    }
+//    public void update(WeatherData data) {
+//        asteroidImage.setImagePath("condition-icons/sunny.png");
+//        String sunrise = FormattingHelpers.TIME_OF_DAY.format(data.getCurrentConditions().getSunriseTime());
+//        String sunset = FormattingHelpers.TIME_OF_DAY.format(data.getCurrentConditions().getSunsetTime());
+//        gameTitle.setText("ASTEROIDS");
+//        description.setText("This game...");
+//
+//        updateLayout();
+//    }
 
     private void updateLayout() {
         gameTitle.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.1);

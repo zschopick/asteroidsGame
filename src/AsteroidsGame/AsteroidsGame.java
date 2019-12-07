@@ -47,8 +47,8 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
         canvas.onMouseDown(event -> {
             beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
             canvas.add(beam);
-//            manager.testHit(beam.getX2(), beam.getY2());
-            manager.createAsteroid();
+            manager.testHit(beam.getX2(), beam.getY2());
+//            manager.createAsteroid();
 
         });
         canvas.onMouseUp(event -> {

@@ -46,49 +46,49 @@ public class Ship extends Ellipse {
     }
 
     boolean shipDestruction() {
-        double left = asteroidsManager.testHit(X - WIDTH - 1, Y);
+        double left = asteroidsManager.testShipHit(X - WIDTH - 1, Y);
         if (left > 0) {
             //tests left side
             updateHealth(left);
             return true;
         }
-        double right = asteroidsManager.testHit(X + WIDTH + 1, Y);
+        double right = asteroidsManager.testShipHit(X + WIDTH + 1, Y);
         if (right > 0) {
             //tests right side
             updateHealth(right);
             return true;
         }
-        double top = asteroidsManager.testHit(X, Y - HEIGHT - 1);
+        double top = asteroidsManager.testShipHit(X, Y - HEIGHT - 1);
         if (top > 0) {
             //tests top side
             updateHealth(top);
             return true;
         }
-        double bottom = asteroidsManager.testHit(X, Y + HEIGHT + 1);
+        double bottom = asteroidsManager.testShipHit(X, Y + HEIGHT + 1);
         if (bottom > 0) {
             //tests bottom side
             updateHealth(bottom);
             return true;
         }
-        double topLeft = asteroidsManager.testHit(this.getX(), this.getY());
+        double topLeft = asteroidsManager.testShipHit(this.getX(), this.getY());
         if (topLeft > 0) {
             //tests top left corner
             updateHealth(topLeft);
             return true;
         }
-        double topRight = asteroidsManager.testHit(this.getX() + WIDTH, this.getY());
+        double topRight = asteroidsManager.testShipHit(this.getX() + WIDTH, this.getY());
         if (topRight > 0) {
             //tests top right corner
             updateHealth(topRight);
             return true;
         }
-        double bottomLeft = asteroidsManager.testHit(this.getX(), this.getY() + HEIGHT);
+        double bottomLeft = asteroidsManager.testShipHit(this.getX(), this.getY() + HEIGHT);
         if (bottomLeft > 0) {
             //tests bottom left corner
             updateHealth(bottomLeft);
             return true;
         }
-        double bottomRight = asteroidsManager.testHit(this.getX() + WIDTH, this.getY() + HEIGHT);
+        double bottomRight = asteroidsManager.testShipHit(this.getX() + WIDTH, this.getY() + HEIGHT);
         if (bottomRight > 0) {
             //tests bottom right corner
             updateHealth(bottomRight);
@@ -97,17 +97,9 @@ public class Ship extends Ellipse {
         return false;
     }
 
-//public void setCurrentPosition(comp127graphics.Point position){
-//
-//        this.setPosition(position.getX(),y);
-//}
 public void setCurrentPosition(MouseMotionEvent evt){
     mX =evt.getPosition().getX();//mouse X
     mY =evt.getPosition().getY();//mouse Y
-//    double Xdist =mX-this.x0; //Get x distance from mouse to ship
-//    double Ydist =mY-this.y0; //Get y distance from mouse to ship
-//    double radAngle = Math.atan(Ydist/Xdist); //Use atan to calculate the angle
-//    setPosition(mX, mY);
 
 
 }

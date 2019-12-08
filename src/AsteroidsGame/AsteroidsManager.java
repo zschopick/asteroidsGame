@@ -10,7 +10,7 @@ import java.util.Random;
 class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
-    private int AsteroidMax;
+    private int AsteroidMax = 15;
     private Asteroids asteroid;
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
@@ -71,7 +71,7 @@ class AsteroidsManager {
         }
     }
 
-    double testHit(double x, double y) {
+    void testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
             if (((Asteroids) location).getWidth() == 100){
@@ -83,6 +83,13 @@ class AsteroidsManager {
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
 
             }
+            destroyAsteroid((Asteroids) location);
+            score += 200;
+    }}
+
+    double testShipHit(double x, double y) {
+        GraphicsObject location = canvas.getElementAt(x, y);
+        if (location instanceof Asteroids) {
             destroyAsteroid((Asteroids) location);
             return ((Asteroids) location).getWidth();
         }
@@ -97,8 +104,10 @@ class AsteroidsManager {
 
     public void split(double width, double x, double y){
         if (width == 100) {
+            score += 50;
             createSplitAsteroid(width, x, y);
         }else if(width == 50){
+            score += 100;
             createSplitAsteroid(width, x, y);
         }
     }

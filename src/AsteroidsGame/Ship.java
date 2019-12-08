@@ -1,19 +1,12 @@
 package AsteroidsGame;
 
 import comp127graphics.*;
-import comp127graphics.Point;
-import comp127graphics.events.MouseMotionEvent;
-
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Ship extends Ellipse {
     private final double X;
     private final double Y;
     private int health;
-    private double mX;
-    private double mY;
     static final double WIDTH = 70;
     static final double HEIGHT = 50;
     private AsteroidsManager asteroidsManager;
@@ -96,11 +89,4 @@ public class Ship extends Ellipse {
         }
         return false;
     }
-
-public void setCurrentPosition(MouseMotionEvent evt){
-    mX =evt.getPosition().getX();//mouse X
-    mY =evt.getPosition().getY();//mouse Y
-
-
-}
 }

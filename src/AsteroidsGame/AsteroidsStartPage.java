@@ -39,7 +39,7 @@ public class AsteroidsStartPage extends GraphicsGroup implements MouseListener, 
         group.add(start);
 
         easy = new Button("EASY");
-        easy.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .4);
+        easy.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .45);
         easy.onClick(() -> level = 5);
         group.add(easy);
 
@@ -49,7 +49,7 @@ public class AsteroidsStartPage extends GraphicsGroup implements MouseListener, 
         group.add(medium);
 
         hard = new Button("HARD");
-        hard.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .6);
+        hard.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .55);
        hard.onClick(() -> level = 15);
         group.add(hard);
 
@@ -59,8 +59,9 @@ public class AsteroidsStartPage extends GraphicsGroup implements MouseListener, 
         group.add(asteroidImage);
 
         gameTitle = new GraphicsText();
-        gameTitle.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.3);
         group.add(gameTitle);
+        gameTitle.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.3);
+        gameTitle.setFillColor(Color.white);
 
         description = new GraphicsText();
         description.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.07);
@@ -77,19 +78,6 @@ public class AsteroidsStartPage extends GraphicsGroup implements MouseListener, 
         description.setText("This game...");
         description.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.85);
     }
-
-//    private comp127graphics.ui.TextField addComponentField(String label, int x, int y) {
-//        GraphicsText labelGraphics = new GraphicsText(label);
-//        labelGraphics.setPosition(x, y);
-//        add(labelGraphics);
-//
-//        comp127graphics.ui.TextField field = new TextField();
-//        field.setPosition(0, y);
-//        add(field);
-//
-//        labelGraphics.setCenter(labelGraphics.getCenter().getX(), field.getCenter().getY());
-//        return field;
-//    }
 
     @Override
     public void mouseClicked(MouseEvent e) {

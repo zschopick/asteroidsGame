@@ -13,12 +13,15 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
     Ship ship;
     HealthBar healthBar;
     ScoreBar scoreBar;
+    AsteroidsStartPage startPage;
     private final int CANVAS_WIDTH = 600;
     private final int CANVAS_HEIGHT = 800;
     private Asteroids asteroid;
     private Beam beam;
 
     public AsteroidsGame(){
+        //startPage = new AsteroidsStartPage();
+
         canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
         manager = new AsteroidsManager(canvas, 0);
         scoreBar = new ScoreBar(manager);

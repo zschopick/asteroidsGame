@@ -27,7 +27,8 @@ public class Asteroids extends Ellipse{
      */
     public Asteroids(double x, double y, double width) {
         super(x, y,width, width);
-        setStrokeColor(Color.white);
+        setStrokeColor(Color.GRAY);
+        setStrokeWidth(3);
         setdX(Math.random()*2-1);   //picks random double between -1 and 1
         setdY(Math.random()*2-1);
 

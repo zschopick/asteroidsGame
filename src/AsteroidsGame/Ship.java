@@ -29,13 +29,13 @@ public class Ship extends Ellipse {
     }
 
     private void updateHealth(double width) {
-        if (width == 100){
+        if (width == 150){
         health -= 20;
         }
-        if(width == 50){
+        if(width == 75){
             health -= 10;
         }
-        if(width == 25){
+        if(width == 37.5){
             health -= 5;
         }
 

@@ -30,7 +30,7 @@ public class Beam extends Line {
         this.x2 = x2;
         this.y1 = y1;
         this.y2 = y2;
-        this.setStrokeWidth(5);
+        this.setStrokeWidth(3);
         this.setStroked(true);
         this.setStrokeColor(Color.GREEN);
 

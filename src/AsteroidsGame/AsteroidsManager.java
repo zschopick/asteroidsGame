@@ -21,9 +21,9 @@ class AsteroidsManager {
         this.score = score;
         AsteroidList = new ArrayList<>();
         rand = new Random();
-        sizeList.add(25.0);
-        sizeList.add(50.0);
-        sizeList.add(100.0);
+        sizeList.add(37.5);
+        sizeList.add(75.0);
+        sizeList.add(150.0);
 
     }
 
@@ -74,11 +74,11 @@ class AsteroidsManager {
     void testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
-            if (((Asteroids) location).getWidth() == 100){
+            if (((Asteroids) location).getWidth() == 150){
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
 
-            }else if (((Asteroids) location).getWidth() == 50){
+            }else if (((Asteroids) location).getWidth() == 75){
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
 
@@ -103,10 +103,10 @@ class AsteroidsManager {
     }
 
     public void split(double width, double x, double y){
-        if (width == 100) {
+        if (width == 150) {
             score += 50;
             createSplitAsteroid(width, x, y);
-        }else if(width == 50){
+        }else if(width == 75){
             score += 100;
             createSplitAsteroid(width, x, y);
         }

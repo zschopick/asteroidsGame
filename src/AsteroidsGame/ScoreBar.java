@@ -11,10 +11,14 @@ public class ScoreBar {
     private GraphicsGroup group;
     private GraphicsText label;
     private AsteroidsManager manager;
+   private double width;
+   private double height;
 
 
-    public ScoreBar(AsteroidsManager manager){
+    public ScoreBar(AsteroidsManager manager, double width, double height){
         this.manager = manager;
+        this.width = width;
+        this.height = height;
         group = new GraphicsGroup();
         label = new GraphicsText();
         label.setFont(FontStyle.BOLD, 30);
@@ -28,7 +32,7 @@ public class ScoreBar {
     }
 
     private void updateLayout() {
-        label.setCenter(400, 50);
+        label.setCenter(width*.75, height*.05);
     }
 
     GraphicsObject getGraphics() {

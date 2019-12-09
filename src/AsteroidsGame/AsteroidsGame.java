@@ -14,7 +14,7 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
     HealthBar healthBar;
     ScoreBar scoreBar;
     AsteroidsStartPage startPage;
-    private final int CANVAS_WIDTH = 600;
+    private final int CANVAS_WIDTH = 1000;
     private final int CANVAS_HEIGHT = 800;
     private Asteroids asteroid;
     private Beam beam;
@@ -24,7 +24,7 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
 
         canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
         manager = new AsteroidsManager(canvas, 0);
-        scoreBar = new ScoreBar(manager);
+        scoreBar = new ScoreBar(manager,CANVAS_WIDTH, CANVAS_HEIGHT);
         run();
         canvas.setBackground(Color.black);
 
@@ -34,7 +34,7 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
         manager.createAsteroid();
         createShip();
         canvas.add(ship);
-        healthBar = new HealthBar(ship);
+        healthBar = new HealthBar(ship, CANVAS_WIDTH,CANVAS_HEIGHT);
         canvas.animate(() -> {
             if(ship.getHealth()>0){
                 manager.moveAsteroids();
@@ -80,6 +80,13 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
     public void mouseClicked(MouseEvent e) {
         Beam beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
         canvas.add(beam);
+    }
+
+    public double getWidth(){
+        return CANVAS_WIDTH;
+    }
+    public double getHeight(){
+        return CANVAS_HEIGHT;
     }
 
     @Override

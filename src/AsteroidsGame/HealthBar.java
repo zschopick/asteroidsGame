@@ -12,9 +12,13 @@ public class HealthBar {
     private GraphicsGroup group;
     private GraphicsText label;
     private Ship ship;
+    private double width;
+    private double height;
 
-    HealthBar(Ship ship) {
+    HealthBar(Ship ship, double width, double height) {
         this.ship = ship;
+        this.width = width;
+        this.height = height;
         group = new GraphicsGroup();
         label = new GraphicsText();
         label.setFont(FontStyle.BOLD, 30);
@@ -28,7 +32,7 @@ public class HealthBar {
     }
 
     private void updateLayout() {
-        label.setCenter(20, 50);
+        label.setCenter(width*.075, height*.05);
     }
 
     GraphicsObject getGraphics() {

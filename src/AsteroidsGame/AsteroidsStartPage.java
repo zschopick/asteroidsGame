@@ -3,6 +3,9 @@ package AsteroidsGame;
 import comp127graphics.*;
 
 public class AsteroidsStartPage {
+
+    //I think we should add some buttons to choose easy/medium/hard then we can use that input for the asteroid manager.
+
     CanvasWindow startCanvas;
     private final int CANVAS_WIDTH = 600;
     private final int CANVAS_HEIGHT = 800;

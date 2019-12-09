@@ -10,7 +10,7 @@ import java.util.Random;
 class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
-    private int AsteroidMax;
+    private int AsteroidMax = 15;
     private Asteroids asteroid;
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
@@ -21,9 +21,9 @@ class AsteroidsManager {
         this.score = score;
         AsteroidList = new ArrayList<>();
         rand = new Random();
-        sizeList.add(25.0);
         sizeList.add(50.0);
         sizeList.add(100.0);
+        sizeList.add(150.0);
 
     }
 
@@ -49,7 +49,7 @@ class AsteroidsManager {
      *
      */
     public void createSplitAsteroid(double width, double x, double y){
-                asteroid = new Asteroids(x, y, width/2);
+                asteroid = new Asteroids(x, y, width-50);
 
                 canvas.add(asteroid);
                 AsteroidList.add(asteroid);
@@ -74,11 +74,11 @@ class AsteroidsManager {
     double testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
-            if (((Asteroids) location).getWidth() == 100){
+            if (((Asteroids) location).getWidth() == 150){
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
 
-            }else if (((Asteroids) location).getWidth() == 50){
+            }else if (((Asteroids) location).getWidth() == 100){
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
                 split(((Asteroids) location).getWidth(), ((Asteroids) location).getX(), ((Asteroids) location).getY());
 
@@ -96,9 +96,9 @@ class AsteroidsManager {
     }
 
     public void split(double width, double x, double y){
-        if (width == 100) {
+        if (width == 150) {
             createSplitAsteroid(width, x, y);
-        }else if(width == 50){
+        }else if(width == 100){
             createSplitAsteroid(width, x, y);
         }
     }

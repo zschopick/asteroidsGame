@@ -19,14 +19,11 @@ public class Game implements MouseListener, MouseMotionListener {
         private Beam beam;
 
         public Game(){
-            //startPage = new AsteroidsStartPage();
-
             canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
-            manager = new AsteroidsManager(canvas, 0, 15);
+            manager = new AsteroidsManager(canvas, 0, AsteroidsGame.getLevel());
             scoreBar = new ScoreBar(manager,CANVAS_WIDTH, CANVAS_HEIGHT);
             run();
             canvas.setBackground(Color.black);
-
         }
 
         public void run(){
@@ -56,16 +53,10 @@ public class Game implements MouseListener, MouseMotionListener {
                 canvas.remove(beam);
             });
 
-
             canvas.add(healthBar.getGraphics());
             canvas.add(scoreBar.getGraphics());
             //TODO: Finish this.
         }
-
-
-//        public static void main(String[] args){
-//            new AsteroidsGame();
-//        }
 
         /**
          * Creates a ship at the center of the canvas.

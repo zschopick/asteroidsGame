@@ -9,10 +9,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionListener {
+    private static int level = 5;
     private CanvasWindow startCanvas;
     private final int CANVAS_WIDTH = 600;
     private final int CANVAS_HEIGHT = 800;
-    private int level;
     private Button easy;
     private Button medium;
     private Button hard;
@@ -26,7 +26,8 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
 
     public AsteroidsGame() {
         startCanvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
-        startCanvas.setBackground(Color.BLUE);
+        Color color = new Color (44, 50, 120);
+        startCanvas.setBackground(color);
 
         group = new GraphicsGroup();
         startCanvas.add(group);
@@ -51,26 +52,27 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         hard.onClick(() -> level = 15);
         group.add(hard);
 
-        //  asteroidImage = new Image(CANVAS_WIDTH * .4, CANVAS_HEIGHT * .3, "Downloads/meteor.png");
+        asteroidImage = new Image(CANVAS_WIDTH * .4, CANVAS_HEIGHT * .3, "res/meteor.png");
         asteroidImage.setMaxWidth(CANVAS_WIDTH * .85);
         asteroidImage.setMaxHeight(CANVAS_HEIGHT * .85);
         group.add(asteroidImage);
 
         gameTitle = new GraphicsText();
         group.add(gameTitle);
-        gameTitle.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.3);
+        gameTitle.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.1);
         gameTitle.setFillColor(Color.white);
 
         description = new GraphicsText();
-        description.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.07);
         group.add(description);
+        description.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.07);
+        description.setFillColor(Color.white);
 
         update();
     }
 
     public void update() {
-        asteroidImage.setImagePath("Downloads/meteor.png");
-        asteroidImage.setPosition(CANVAS_WIDTH * .08, CANVAS_HEIGHT * .23);
+       // asteroidImage.setImagePath("res/meteor.png");
+        asteroidImage.setPosition(CANVAS_WIDTH * .1, CANVAS_HEIGHT * .3);
         gameTitle.setText("ASTEROIDS");
         gameTitle.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.1);
         description.setText("This game...");
@@ -81,7 +83,7 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         new AsteroidsGame();
     }
 
-    public int getLevel(){
+    static int getLevel(){
         return level;
     }
 

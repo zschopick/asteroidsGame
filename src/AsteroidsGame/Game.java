@@ -9,6 +9,7 @@ import java.awt.event.MouseMotionListener;
 public class Game implements MouseListener, MouseMotionListener {
         CanvasWindow canvas;
         AsteroidsManager manager;
+        HealthObjsManager hManager;
         Ship ship;
         HealthBar healthBar;
         ScoreBar scoreBar;
@@ -22,13 +23,13 @@ public class Game implements MouseListener, MouseMotionListener {
             canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
             manager = new AsteroidsManager(canvas, 0, AsteroidsGame.getLevel());
             scoreBar = new ScoreBar(manager,CANVAS_WIDTH, CANVAS_HEIGHT);
+            hManager = new HealthObjsManager(canvas, ship);
             run();
             canvas.setBackground(Color.black);
         }
 
         public void run(){
             manager.createAsteroid();
-            manager.createHealthObj();
             createShip();
             canvas.add(ship);
             healthBar = new HealthBar(ship, CANVAS_WIDTH,CANVAS_HEIGHT);
@@ -64,7 +65,7 @@ public class Game implements MouseListener, MouseMotionListener {
          * Creates a ship at the center of the canvas.
          */
         public void createShip(){
-            ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100);
+            ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100, beam);
 
         }
 

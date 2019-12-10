@@ -15,16 +15,15 @@ class AsteroidsManager {
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
     private int score;
-    private List<HealthObjs> healthList = new ArrayList<>();
-    private HealthObjs healthObj;
+    private Ship ship;
 
 
     AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
         this.canvas = canvas;
         this.score = score;
+        //this.ship = ship;
         this.asteroidMax = asteroidMax;
         AsteroidList = new ArrayList<>();
-        healthList = new ArrayList<>();
         rand = new Random();
         sizeList.add(37.5);
         sizeList.add(75.0);
@@ -115,32 +114,6 @@ class AsteroidsManager {
             score += 100;
             createSplitAsteroid(width, x, y);
         }
-    }
-
-
-    public void createHealthObj() {
-        for(int i = 0; i<5; i++) {
-            double heathX = rand.nextInt(canvas.getWidth());
-            double healthY = rand.nextInt(canvas.getHeight());
-            healthObj = new HealthObjs(heathX, healthY);
-            canvas.add(healthObj);
-            healthList.add(healthObj);
-        }
-    }
-
-    void destroyHealthObj(HealthObjs obj){
-        canvas.remove(obj);
-        healthList.remove(obj);
-
-    }
-
-
-    boolean testHitHealth(double x, double y) {
-        GraphicsObject location = canvas.getElementAt(x, y);
-        if(location instanceof HealthObjs){
-            return true;
-        }
-        return false;
     }
 
 

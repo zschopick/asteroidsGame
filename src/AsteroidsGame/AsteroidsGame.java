@@ -11,7 +11,7 @@ import java.awt.event.MouseMotionListener;
 class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionListener {
     private static int level = 5;
     private CanvasWindow startCanvas;
-    private final int CANVAS_WIDTH = 600;
+    private final int CANVAS_WIDTH = 1000;
     private final int CANVAS_HEIGHT = 800;
     private Button easy;
     private Button medium;
@@ -64,7 +64,7 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
 
         description = new GraphicsText();
         group.add(description);
-        description.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.07);
+        description.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.015);
         description.setFillColor(Color.white);
 
         update();
@@ -75,8 +75,11 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         asteroidImage.setPosition(CANVAS_WIDTH * .1, CANVAS_HEIGHT * .3);
         gameTitle.setText("ASTEROIDS");
         gameTitle.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.1);
-        description.setText("This game...");
-        description.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.85);
+        description.setText("In the game Asteroids, shoot down as many asteroids as possible to gain points--" +
+                "\n" + "be careful not to get hit by any or you will lose health."
+                + '\n' +" Score as many points as possible and enjoy!");
+        //Make description on multiple lines
+        description.setCenter(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.7);
     }
 
     public static void main(String[] args){

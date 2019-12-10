@@ -38,12 +38,14 @@ public class Game implements MouseListener, MouseMotionListener {
                     healthBar.update();
                     scoreBar.update();}
                 else{
+                    System.out.println("You have died.");
                     canvas.closeWindow();
+                    new AsteroidsGame();    //Figure out how to return to start page after end of game
                 }
             });
 
             canvas.onMouseDown(event -> {
-                beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+                beam = new Beam(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
                 canvas.add(beam);
                 manager.testHit(beam.getX2(), beam.getY2());
 //            manager.createAsteroid();
@@ -55,28 +57,20 @@ public class Game implements MouseListener, MouseMotionListener {
 
             canvas.add(healthBar.getGraphics());
             canvas.add(scoreBar.getGraphics());
-            //TODO: Finish this.
         }
 
         /**
          * Creates a ship at the center of the canvas.
          */
         public void createShip(){
-            ship = new Ship(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2,  manager, 100);
+            ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100);
 
         }
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            Beam beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+            Beam beam = new Beam(CANVAS_WIDTH* .5, CANVAS_HEIGHT* .5, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
             canvas.add(beam);
-        }
-
-        public double getWidth(){
-            return CANVAS_WIDTH;
-        }
-        public double getHeight(){
-            return CANVAS_HEIGHT;
         }
 
         @Override

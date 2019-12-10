@@ -1,92 +1,98 @@
 package AsteroidsGame;
 
-import comp127graphics.CanvasWindow;
-
+import comp127graphics.*;
+import comp127graphics.Image;
+import comp127graphics.ui.Button;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class AsteroidsGame implements MouseListener, MouseMotionListener {
-    CanvasWindow canvas;
-    AsteroidsManager manager;
-    Ship ship;
-    HealthBar healthBar;
-    ScoreBar scoreBar;
-    AsteroidsStartPage startPage;
+class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionListener {
+    private static int level = 5;
+    private CanvasWindow startCanvas;
     private final int CANVAS_WIDTH = 1000;
     private final int CANVAS_HEIGHT = 800;
-    private Asteroids asteroid;
-    private Beam beam;
+    private Button easy;
+    private Button medium;
+    private Button hard;
+    private GraphicsGroup group;
 
-    public AsteroidsGame(){
-        //startPage = new AsteroidsStartPage();
+    private GraphicsText gameTitle;
+    private GraphicsText description;
+    private Button start;
 
-        canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
-        manager = new AsteroidsManager(canvas, 0);
-        scoreBar = new ScoreBar(manager,CANVAS_WIDTH, CANVAS_HEIGHT);
-        run();
-        canvas.setBackground(Color.black);
+    private Image asteroidImage;
 
+    public AsteroidsGame() {
+        startCanvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
+        Color color = new Color (44, 50, 120);
+        startCanvas.setBackground(color);
+
+        group = new GraphicsGroup();
+        startCanvas.add(group);
+
+        start = new Button("START");
+        start.setCenter(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5);
+        start.onClick(() -> new Game());
+        group.add(start);
+
+        easy = new Button("EASY");
+        easy.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .45);
+        easy.onClick(() -> level = 5);
+        group.add(easy);
+
+        medium = new Button("MEDIUM");
+        medium.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .5);
+        medium.onClick(() -> level = 10);
+        group.add(medium);
+
+        hard = new Button("HARD");
+        hard.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .55);
+        hard.onClick(() -> level = 15);
+        group.add(hard);
+
+        asteroidImage = new Image(CANVAS_WIDTH * .4, CANVAS_HEIGHT * .3, "res/meteor.png");
+        asteroidImage.setMaxWidth(CANVAS_WIDTH * .85);
+        asteroidImage.setMaxHeight(CANVAS_HEIGHT * .85);
+        group.add(asteroidImage);
+
+        gameTitle = new GraphicsText();
+        group.add(gameTitle);
+        gameTitle.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.1);
+        gameTitle.setFillColor(Color.white);
+
+        description = new GraphicsText();
+        group.add(description);
+        description.setFont(FontStyle.BOLD, CANVAS_WIDTH * 0.015);
+        description.setFillColor(Color.white);
+
+        update();
     }
 
-    public void run(){
-        manager.createAsteroid();
-        createShip();
-        canvas.add(ship);
-        healthBar = new HealthBar(ship, CANVAS_WIDTH,CANVAS_HEIGHT);
-        canvas.animate(() -> {
-            if(ship.getHealth()>0){
-                manager.moveAsteroids();
-                ship.shipDestruction();
-                healthBar.update();
-                scoreBar.update();}
-            else{
-                canvas.closeWindow();
-            }
-            });
-
-        canvas.onMouseDown(event -> {
-            beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
-            canvas.add(beam);
-            manager.testHit(beam.getX2(), beam.getY2());
-//            manager.createAsteroid();
-
-        });
-        canvas.onMouseUp(event -> {
-            canvas.remove(beam);
-        });
-
-
-        canvas.add(healthBar.getGraphics());
-        canvas.add(scoreBar.getGraphics());
-       //TODO: Finish this.
+    public void update() {
+       // asteroidImage.setImagePath("res/meteor.png");
+        asteroidImage.setPosition(CANVAS_WIDTH * .1, CANVAS_HEIGHT * .3);
+        gameTitle.setText("ASTEROIDS");
+        gameTitle.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.1);
+        description.setText("In the game Asteroids, shoot down as many asteroids as possible to gain points--" +
+                "\n" + "be careful not to get hit by any or you will lose health."
+                + '\n' +" Score as many points as possible and enjoy!");
+        //Make description on multiple lines
+        description.setCenter(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.7);
     }
-
 
     public static void main(String[] args){
         new AsteroidsGame();
     }
 
-    /**
-     * Creates a ship at the center of the canvas.
-     */
-    public void createShip(){
-        ship = new Ship(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2,  manager, 100);
-
+    static int getLevel(){
+        return level;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Beam beam = new Beam(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
-        canvas.add(beam);
-    }
 
-    public double getWidth(){
-        return CANVAS_WIDTH;
-    }
-    public double getHeight(){
-        return CANVAS_HEIGHT;
     }
 
     @Override
@@ -118,4 +124,6 @@ public class AsteroidsGame implements MouseListener, MouseMotionListener {
     public void mouseMoved(MouseEvent e) {
 
     }
+
 }
+

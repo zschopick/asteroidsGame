@@ -18,6 +18,7 @@ public class Asteroids extends Ellipse{
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
 
+
     /**
      * Creates an ellipse whose upper left is at (x,y), and which has the specified width and height.
      * It has a 1 pixel black stroke outline by default.

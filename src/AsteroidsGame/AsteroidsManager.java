@@ -10,20 +10,26 @@ import java.util.Random;
 class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
-    private int AsteroidMax = 15;
+    private int asteroidMax;
     private Asteroids asteroid;
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
     private int score;
+    private List<HealthObjs> healthList = new ArrayList<>();
+    private HealthObjs healthObj;
 
-    AsteroidsManager(CanvasWindow canvas, int score){
+
+    AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
         this.canvas = canvas;
         this.score = score;
+        this.asteroidMax = asteroidMax;
         AsteroidList = new ArrayList<>();
+        healthList = new ArrayList<>();
         rand = new Random();
         sizeList.add(37.5);
         sizeList.add(75.0);
         sizeList.add(150.0);
+
 
     }
 
@@ -32,8 +38,8 @@ class AsteroidsManager {
      * if the size of the asteroids list is smaller than the max amount it creates asteroids until the two are equal.
      */
     void createAsteroid(){
-        if (AsteroidList.size() < AsteroidMax){
-            while(AsteroidList.size() < AsteroidMax){
+        if (AsteroidList.size() < asteroidMax){
+            while(AsteroidList.size() < asteroidMax){
                 double asteroidX = rand.nextInt(canvas.getWidth());
                 double asteroidY = rand.nextInt(canvas.getHeight());
                 double width = sizeList.get(rand.nextInt(3));
@@ -42,7 +48,6 @@ class AsteroidsManager {
                 AsteroidList.add(asteroid);
             }
         }
-//        testHit(asteroid.getX(), asteroid.getY());
     }
 
     /**
@@ -111,4 +116,36 @@ class AsteroidsManager {
             createSplitAsteroid(width, x, y);
         }
     }
+
+
+    public void createHealthObj() {
+        for(int i = 0; i<5; i++) {
+            double heathX = rand.nextInt(canvas.getWidth());
+            double healthY = rand.nextInt(canvas.getHeight());
+            healthObj = new HealthObjs(heathX, healthY);
+            canvas.add(healthObj);
+            healthList.add(healthObj);
+        }
+    }
+
+    void destroyHealthObj(HealthObjs obj){
+        canvas.remove(obj);
+        healthList.remove(obj);
+
+    }
+
+
+    boolean testHitHealth(double x, double y) {
+        GraphicsObject location = canvas.getElementAt(x, y);
+        if(location instanceof HealthObjs){
+            return true;
+        }
+        return false;
+    }
+
+
+
 }
+
+
+

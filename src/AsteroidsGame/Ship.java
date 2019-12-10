@@ -6,10 +6,11 @@ import java.awt.*;
 public class Ship extends Ellipse {
     private final double X;
     private final double Y;
-    private int health;
+    public int health;
     static final double WIDTH = 70;
     static final double HEIGHT = 50;
     private AsteroidsManager asteroidsManager;
+    private Beam beam;
 
     public Ship(double X, double Y, AsteroidsManager asteroidsManager, int health) {
         super(X, Y, 70, 50);
@@ -23,7 +24,7 @@ public class Ship extends Ellipse {
 
     private void updateHealth(double width) {
         if (width == 150){
-        health -= 20;
+            health -= 20;
         }
         if(width == 75){
             health -= 10;
@@ -31,6 +32,12 @@ public class Ship extends Ellipse {
         if(width == 37.5){
             health -= 5;
         }
+//        if(asteroidsManager.testHitHealth(beam.getX1(), beam.getY1())){
+//            health += 10;
+//            asteroidsManager.destroyHealthObj();
+//        }
+
+
 
     }
 

@@ -28,6 +28,7 @@ public class Game implements MouseListener, MouseMotionListener {
 
         public void run(){
             manager.createAsteroid();
+            manager.createHealthObj();
             createShip();
             canvas.add(ship);
             healthBar = new HealthBar(ship, CANVAS_WIDTH,CANVAS_HEIGHT);

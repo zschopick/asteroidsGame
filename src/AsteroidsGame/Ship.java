@@ -11,8 +11,10 @@ public class Ship extends Ellipse {
     static final double HEIGHT = 50;
     private AsteroidsManager asteroidsManager;
     private Beam beam;
+    CanvasWindow canvas;
 
-    public Ship(double X, double Y, AsteroidsManager asteroidsManager, int health, Beam beam) {
+
+    public Ship(double X, double Y, AsteroidsManager asteroidsManager, int health, Beam beam, CanvasWindow canvas) {
         super(X, Y, 70, 50);
         this.X = X;
         this.Y = Y;
@@ -21,18 +23,31 @@ public class Ship extends Ellipse {
         this.asteroidsManager = asteroidsManager;
         setCenter(X, Y);
         this.beam = beam;
+        this.canvas = canvas;
     }
 
     private void updateHealthHit (double width) {
         //health += asteroidsManager.testHitHealth(beam.getX2(), beam.getY2());
         if (width == 150){
             health -= 20;
+            this.setFillColor(Color.RED);
+            canvas.onMouseDown(event -> {
+                this.setFillColor(Color.white);
+            });
         }
         if(width == 75){
             health -= 10;
+            this.setFillColor(Color.RED);
+            canvas.onMouseDown(event -> {
+                this.setFillColor(Color.white);
+            });
         }
         if(width == 37.5){
             health -= 5;
+            this.setFillColor(Color.RED);
+            canvas.onMouseDown(event -> {
+                this.setFillColor(Color.white);
+            });
         }
 
 

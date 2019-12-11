@@ -65,7 +65,7 @@ public class Game implements MouseListener, MouseMotionListener {
          * Creates a ship at the center of the canvas.
          */
         public void createShip(){
-            ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100, beam);
+            ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100, beam, canvas);
 
         }
 

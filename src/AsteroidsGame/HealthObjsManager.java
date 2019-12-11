@@ -38,18 +38,15 @@ public class HealthObjsManager {
 
     }
 
-    public boolean testHitHealth(double x, double y){
+    public void testHitHealth(double x, double y){
         GraphicsObject location = canvas.getElementAt(x, y);
         if(location instanceof HealthObjs){
-            return true;
+
         }
-        return false;
+
     }
 
-//    public void addHealth(){
-//        if(testHitHealth())
-//    }
-//
+
 
 
 }

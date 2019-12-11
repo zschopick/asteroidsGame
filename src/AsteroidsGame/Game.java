@@ -41,7 +41,7 @@ public class Game implements MouseListener, MouseMotionListener {
                     scoreBar.update();}
                 else{
                     System.out.println("You have died.");
-                    canvas.closeWindow();
+                    //canvas.closeWindow();
                     new AsteroidsGame();    //Figure out how to return to start page after end of game
                 }
             });

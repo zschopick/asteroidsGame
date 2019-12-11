@@ -39,8 +39,8 @@ class AsteroidsManager {
     void createAsteroid(){
         if (AsteroidList.size() < asteroidMax){
             while(AsteroidList.size() < asteroidMax){
-                double asteroidX = rand.nextInt(canvas.getWidth());
-                double asteroidY = rand.nextInt(canvas.getHeight());
+                double asteroidX = rand.nextInt(200) + 700;
+                double asteroidY = rand.nextInt(200) + 500;
                 double width = sizeList.get(rand.nextInt(3));
                 asteroid = new Asteroids(asteroidX, asteroidY,width);
                 canvas.add(asteroid);

@@ -7,28 +7,27 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class Game implements MouseListener, MouseMotionListener {
-        CanvasWindow canvas;
-        AsteroidsManager manager;
-        HealthObjsManager hManager;
-        Ship ship;
-        HealthBar healthBar;
-        ScoreBar scoreBar;
-        AsteroidsGame startPage;
+        private CanvasWindow canvas;
+        private AsteroidsManager manager;
+        private HealthObjsManager hManager;
+        private Ship ship;
+        private HealthBar healthBar;
+        private ScoreBar scoreBar;
         private final int CANVAS_WIDTH = 1000;
         private final int CANVAS_HEIGHT = 800;
-        private Asteroids asteroid;
         private Beam beam;
 
-        public Game(){
+        Game(){
             canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
             manager = new AsteroidsManager(canvas, 0, AsteroidsGame.getLevel());
             scoreBar = new ScoreBar(manager,CANVAS_WIDTH, CANVAS_HEIGHT);
             hManager = new HealthObjsManager(canvas, ship);
-            run();
             canvas.setBackground(Color.black);
+            run();
+
         }
 
-        public void run(){
+        private void run(){
             manager.createAsteroid();
             createShip();
             canvas.add(ship);
@@ -41,8 +40,7 @@ public class Game implements MouseListener, MouseMotionListener {
                     scoreBar.update();}
                 else{
                     System.out.println("You have died.");
-                    //canvas.closeWindow();
-                    new AsteroidsGame();    //Figure out how to return to start page after end of game
+                    canvas.closeWindow();
                 }
             });
 
@@ -64,7 +62,7 @@ public class Game implements MouseListener, MouseMotionListener {
         /**
          * Creates a ship at the center of the canvas.
          */
-        public void createShip(){
+        private void createShip(){
             ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100, beam, canvas);
 
         }

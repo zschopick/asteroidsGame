@@ -23,15 +23,18 @@ class AsteroidsManager {
     AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
         this.canvas = canvas;
         this.score = score;
-        //this.ship = ship;
         this.asteroidMax = asteroidMax;
         AsteroidList = new ArrayList<>();
         rand = new Random();
         sizeList.add(37.5);
         sizeList.add(75.0);
         sizeList.add(150.0);
-
-
+        for(int i=0; i<20; i++){
+            locationXList.add((double) rand.nextInt(450));
+            locationXList.add((double) (rand.nextInt(450) + 550));
+            locationYList.add((double) (rand.nextInt(450) + 550));
+            locationYList.add((double) (rand.nextInt(350) + 450));
+        }
     }
 
     /**
@@ -41,18 +44,10 @@ class AsteroidsManager {
     void createAsteroid(){
         if (AsteroidList.size() < asteroidMax){
             while(AsteroidList.size() < asteroidMax){
-                double asteroidXSmall = rand.nextInt(450);
-                double asteroidYSmall = rand.nextInt(350);
-                double asteroidXLarge = rand.nextInt(450) + 550;
-                double asteroidYLarge = rand.nextInt(350) + 450;
-                locationXList.add(asteroidXSmall);
-                locationXList.add(asteroidXLarge);
-                locationYList.add(asteroidYSmall);
-                locationYList.add(asteroidYLarge);
-                double asteroidX = locationXList.get(rand.nextInt(2));
-                double asteroidY = locationYList.get(rand.nextInt(2));
+                double asteroidX = locationXList.get(rand.nextInt(40));
+                double asteroidY = locationYList.get(rand.nextInt(40));
                 double width = sizeList.get(rand.nextInt(3));
-                asteroid = new Asteroids(asteroidX, asteroidY,width);
+                asteroid = new Asteroids(asteroidX, asteroidY,width); //same random location is used for all asteroids?
                 canvas.add(asteroid);
                 AsteroidList.add(asteroid);
             }

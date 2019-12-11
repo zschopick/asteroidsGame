@@ -14,6 +14,8 @@ class AsteroidsManager {
     private Asteroids asteroid;
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
+    private List<Double> locationXList = new ArrayList<>();
+    private List<Double> locationYList = new ArrayList<>();
     private int score;
     private Ship ship;
 
@@ -39,8 +41,16 @@ class AsteroidsManager {
     void createAsteroid(){
         if (AsteroidList.size() < asteroidMax){
             while(AsteroidList.size() < asteroidMax){
-                double asteroidX = rand.nextInt(200) + 700;
-                double asteroidY = rand.nextInt(200) + 500;
+                double asteroidXSmall = rand.nextInt(450);
+                double asteroidYSmall = rand.nextInt(350);
+                double asteroidXLarge = rand.nextInt(450) + 550;
+                double asteroidYLarge = rand.nextInt(350) + 450;
+                locationXList.add(asteroidXSmall);
+                locationXList.add(asteroidXLarge);
+                locationYList.add(asteroidYSmall);
+                locationYList.add(asteroidYLarge);
+                double asteroidX = locationXList.get(rand.nextInt(2));
+                double asteroidY = locationYList.get(rand.nextInt(2));
                 double width = sizeList.get(rand.nextInt(3));
                 asteroid = new Asteroids(asteroidX, asteroidY,width);
                 canvas.add(asteroid);

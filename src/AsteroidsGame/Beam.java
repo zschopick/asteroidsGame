@@ -8,12 +8,10 @@ import java.awt.MouseInfo;
 import java.awt.*;
 
 public class Beam extends Line {
-    CanvasWindow canvas;
     private double x1;
     private double x2;
     private double y1;
     private double y2;
-    private Ship shipShape;
 
     /**
      * Creates a line starting at position (x1,y1) and ending at (x2,y2).
@@ -36,24 +34,3 @@ public class Beam extends Line {
 
     }
 }
-
-
-
-//    public double getEndX(){
-//        canvas.onClick(event -> event.getPosition().getX());
-//    }
-//
-//    public double getEndY(){
-//    canvas.onClick(event -> event.getPosition().getY());
-//    }
-
-//    public void shootBeam(CanvasWindow canvas){
-//       canvas.onClick(() -> this.draw((shipShape.getX(), shipShape.getY(), MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY()));
-//
-//
-//    }
-//
-//    public void createBeam(){
-//
-//    }
-//}

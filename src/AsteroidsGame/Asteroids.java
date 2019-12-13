@@ -10,14 +10,10 @@ import java.util.List;
 import java.util.Random;
 
 public class Asteroids extends Ellipse{
-    private final double asteroidRadius = 100;
     private double dX;
     private double dY;
     private double xPos;
     private double yPos;
-    private Random rand;
-    private List<Double> sizeList = new ArrayList<>();
-
 
     /**
      * Creates an ellipse whose upper left is at (x,y), and which has the specified width and height.
@@ -35,7 +31,7 @@ public class Asteroids extends Ellipse{
 
     }
 
-    public void updatePosition(CanvasWindow canvas){
+    void updatePosition(CanvasWindow canvas){
         if (getY() > canvas.getHeight()){
             setPosition(getX(), 0);
         }
@@ -59,15 +55,15 @@ public class Asteroids extends Ellipse{
     }
 
 
-    public void setdX(double dX) {
+    private void setdX(double dX) {
         this.dX = dX;
     }
 
-    public void setdY(double dY){
+    private void setdY(double dY){
         this.dY = dY;
     }
 
-    public double getdY() {
+    private double getdY() {
         return dY;
     }
 

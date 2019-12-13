@@ -1,7 +1,4 @@
 package AsteroidsGame;
-/**
- * A GraphicsText object that shows the health of the ship.
- */
 
 import comp127graphics.FontStyle;
 import comp127graphics.GraphicsGroup;
@@ -10,8 +7,10 @@ import comp127graphics.GraphicsText;
 
 import java.awt.*;
 
-
-public class HealthBar {
+/**
+ * A GraphicsText object that shows the health of the ship.
+ */
+class HealthBar {
 
     private GraphicsGroup group;
     private GraphicsText label;

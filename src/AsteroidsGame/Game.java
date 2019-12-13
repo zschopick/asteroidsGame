@@ -47,12 +47,12 @@ public class Game implements MouseListener, MouseMotionListener {
             });
 
             canvas.onMouseDown(event -> {
-                beam = new Beam(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+                beam = new Beam(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,
+                        MouseInfo.getPointerInfo().getLocation().getX(),
+                        MouseInfo.getPointerInfo().getLocation().getY());
                 canvas.add(beam);
                 manager.testHit(beam.getX2(), beam.getY2());
                 hManager.testHitHealth(beam.getX2(), beam.getY2());
-//            manager.createAsteroid();
-
             });
             canvas.onMouseUp(event -> {
                 canvas.remove(beam);
@@ -67,7 +67,6 @@ public class Game implements MouseListener, MouseMotionListener {
          */
         private void createShip(){
             ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100, beam, canvas);
-
         }
 
         @Override

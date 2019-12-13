@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class AsteroidsManager {
+class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
     private int asteroidMax;
@@ -17,10 +17,8 @@ public class AsteroidsManager {
     private List<Double> locationXList = new ArrayList<>();
     private List<Double> locationYList = new ArrayList<>();
     private int score;
-    private Ship ship;
 
-
-    public AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
+    AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
         this.canvas = canvas;
         this.score = score;
         this.asteroidMax = asteroidMax;
@@ -57,7 +55,7 @@ public class AsteroidsManager {
     /**
      *
      */
-    public void createSplitAsteroid(double width, double x, double y){
+    private void createSplitAsteroid(double width, double x, double y){
                 asteroid = new Asteroids(x, y, width/2);
 
                 canvas.add(asteroid);
@@ -80,7 +78,7 @@ public class AsteroidsManager {
         }
     }
 
-    public void testHit(double x, double y) {
+    void testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
             if (((Asteroids) location).getWidth() == 150){
@@ -96,7 +94,7 @@ public class AsteroidsManager {
             score += 200;
     }}
 
-    public double testShipHit(double x, double y) {
+    double testShipHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
             destroyAsteroid((Asteroids) location);
@@ -107,11 +105,11 @@ public class AsteroidsManager {
         }
     }
 
-    public double getScore(){
+    double getScore(){
         return score;
     }
 
-    public void split(double width, double x, double y){
+    private void split(double width, double x, double y){
         if (width == 150) {
             score += 50;
             createSplitAsteroid(width, x, y);
@@ -120,7 +118,6 @@ public class AsteroidsManager {
             createSplitAsteroid(width, x, y);
         }
     }
-
 
 
 }

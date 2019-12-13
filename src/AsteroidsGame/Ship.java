@@ -25,7 +25,8 @@ public class Ship extends Ellipse {
      * @param beam
      * @param canvas
      */
-    public Ship(double X, double Y, AsteroidsManager asteroidsManager, int health, Beam beam, CanvasWindow canvas) {
+    public Ship(double X, double Y, AsteroidsManager asteroidsManager,
+                int health, Beam beam, CanvasWindow canvas) {
         super(X, Y, 70, 50);
         this.X = X;
         this.Y = Y;
@@ -42,7 +43,6 @@ public class Ship extends Ellipse {
      * @param width
      */
     private void updateHealthHit (double width) {
-        //health += asteroidsManager.testHitHealth(beam.getX2(), beam.getY2());
         if (width == 150){
             health -= 20;
             this.setFillColor(Color.RED);
@@ -64,8 +64,6 @@ public class Ship extends Ellipse {
                 this.setFillColor(Color.white);
             });
         }
-
-
     }
 
     /**
@@ -80,57 +78,54 @@ public class Ship extends Ellipse {
      * Tests 8 locations on the outside of the ship and tests the locations to see if they are being hit by an asteroid
      * if the testShipHit method returns a double greater than zero than the updateHealthHit method is called for the
      * width of the asteroid and returns true.
-     * @return boolean
      */
-    boolean shipDestruction() {
+    void shipDestruction() {
         double left = asteroidsManager.testShipHit(X - WIDTH - 1, Y);
         if (left > 0) {
             //tests left side
             updateHealthHit(left);
-            return true;
+            return;
         }
         double right = asteroidsManager.testShipHit(X + WIDTH + 1, Y);
         if (right > 0) {
             //tests right side
             updateHealthHit(right);
-            return true;
+            return;
         }
         double top = asteroidsManager.testShipHit(X, Y - HEIGHT - 1);
         if (top > 0) {
             //tests top side
             updateHealthHit(top);
-            return true;
+            return;
         }
         double bottom = asteroidsManager.testShipHit(X, Y + HEIGHT + 1);
         if (bottom > 0) {
             //tests bottom side
             updateHealthHit(bottom);
-            return true;
+            return;
         }
         double topLeft = asteroidsManager.testShipHit(this.getX(), this.getY());
         if (topLeft > 0) {
             //tests top left corner
             updateHealthHit(topLeft);
-            return true;
+            return;
         }
         double topRight = asteroidsManager.testShipHit(this.getX() + WIDTH, this.getY());
         if (topRight > 0) {
             //tests top right corner
             updateHealthHit(topRight);
-            return true;
+            return;
         }
         double bottomLeft = asteroidsManager.testShipHit(this.getX(), this.getY() + HEIGHT);
         if (bottomLeft > 0) {
             //tests bottom left corner
             updateHealthHit(bottomLeft);
-            return true;
+            return;
         }
         double bottomRight = asteroidsManager.testShipHit(this.getX() + WIDTH, this.getY() + HEIGHT);
         if (bottomRight > 0) {
             //tests bottom right corner
             updateHealthHit(bottomRight);
-            return true;
         }
-        return false;
     }
 }

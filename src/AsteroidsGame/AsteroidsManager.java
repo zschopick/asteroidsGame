@@ -14,9 +14,10 @@ class AsteroidsManager {
     private Asteroids asteroid;
     private Random rand;
     private List<Double> sizeList = new ArrayList<>();
+    private List<Double> locationXList = new ArrayList<>();
+    private List<Double> locationYList = new ArrayList<>();
     private int score;
-    private List<HealthObjs> healthList = new ArrayList<>();
-    private HealthObjs healthObj;
+    private Ship ship;
 
 
     AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
@@ -24,13 +25,16 @@ class AsteroidsManager {
         this.score = score;
         this.asteroidMax = asteroidMax;
         AsteroidList = new ArrayList<>();
-        healthList = new ArrayList<>();
         rand = new Random();
         sizeList.add(37.5);
         sizeList.add(75.0);
         sizeList.add(150.0);
-
-
+        for(int i=0; i<20; i++){
+            locationXList.add((double) rand.nextInt(450));
+            locationXList.add((double) (rand.nextInt(450) + 550));
+            locationYList.add((double) (rand.nextInt(450) + 550));
+            locationYList.add((double) (rand.nextInt(350) + 450));
+        }
     }
 
     /**
@@ -40,10 +44,10 @@ class AsteroidsManager {
     void createAsteroid(){
         if (AsteroidList.size() < asteroidMax){
             while(AsteroidList.size() < asteroidMax){
-                double asteroidX = rand.nextInt(canvas.getWidth());
-                double asteroidY = rand.nextInt(canvas.getHeight());
+                double asteroidX = locationXList.get(rand.nextInt(40));
+                double asteroidY = locationYList.get(rand.nextInt(40));
                 double width = sizeList.get(rand.nextInt(3));
-                asteroid = new Asteroids(asteroidX, asteroidY,width);
+                asteroid = new Asteroids(asteroidX, asteroidY,width); //same random location is used for all asteroids?
                 canvas.add(asteroid);
                 AsteroidList.add(asteroid);
             }
@@ -115,32 +119,6 @@ class AsteroidsManager {
             score += 100;
             createSplitAsteroid(width, x, y);
         }
-    }
-
-
-    public void createHealthObj() {
-        for(int i = 0; i<5; i++) {
-            double heathX = rand.nextInt(canvas.getWidth());
-            double healthY = rand.nextInt(canvas.getHeight());
-            healthObj = new HealthObjs(heathX, healthY);
-            canvas.add(healthObj);
-            healthList.add(healthObj);
-        }
-    }
-
-    void destroyHealthObj(HealthObjs obj){
-        canvas.remove(obj);
-        healthList.remove(obj);
-
-    }
-
-
-    boolean testHitHealth(double x, double y) {
-        GraphicsObject location = canvas.getElementAt(x, y);
-        if(location instanceof HealthObjs){
-            return true;
-        }
-        return false;
     }
 
 

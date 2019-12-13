@@ -29,6 +29,7 @@ public class Game implements MouseListener, MouseMotionListener {
 
         private void run(){
             manager.createAsteroid();
+            hManager.createHealthObj();
             createShip();
             canvas.add(ship);
             healthBar = new HealthBar(ship, CANVAS_WIDTH,CANVAS_HEIGHT);
@@ -48,6 +49,7 @@ public class Game implements MouseListener, MouseMotionListener {
                 beam = new Beam(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
                 canvas.add(beam);
                 manager.testHit(beam.getX2(), beam.getY2());
+                hManager.testHitHealth(beam.getX2(), beam.getY2());
 //            manager.createAsteroid();
 
             });

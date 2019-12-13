@@ -13,6 +13,7 @@ public class HealthObjsManager {
     private Random rand;
     private List<HealthObjs> healthList = new ArrayList<>();
     private Ship ship;
+    //protected int health;
 
     public HealthObjsManager(CanvasWindow canvas, Ship ship ){
         this.canvas = canvas;
@@ -41,7 +42,8 @@ public class HealthObjsManager {
     public void testHitHealth(double x, double y){
         GraphicsObject location = canvas.getElementAt(x, y);
         if(location instanceof HealthObjs){
-
+            //health += 10;
+            destroyHealthObj((HealthObjs) location);
         }
 
     }

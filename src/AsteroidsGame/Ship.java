@@ -6,7 +6,7 @@ import java.awt.*;
 public class Ship extends Ellipse {
     private final double X;
     private final double Y;
-    public int health;
+    private int health;
     static final double WIDTH = 70;
     static final double HEIGHT = 50;
     private AsteroidsManager asteroidsManager;

@@ -27,7 +27,8 @@ public class Game implements MouseListener, MouseMotionListener {
 
         }
 
-        private void run(){
+
+    private void run(){
             manager.createAsteroid();
             hManager.createHealthObj();
             createShip();

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class AsteroidsManager {
+public class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
     private int asteroidMax;
@@ -20,7 +20,7 @@ class AsteroidsManager {
     private Ship ship;
 
 
-    AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
+    public AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax){
         this.canvas = canvas;
         this.score = score;
         this.asteroidMax = asteroidMax;
@@ -80,7 +80,7 @@ class AsteroidsManager {
         }
     }
 
-    void testHit(double x, double y) {
+    public void testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
             if (((Asteroids) location).getWidth() == 150){
@@ -96,7 +96,7 @@ class AsteroidsManager {
             score += 200;
     }}
 
-    double testShipHit(double x, double y) {
+    public double testShipHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
             destroyAsteroid((Asteroids) location);

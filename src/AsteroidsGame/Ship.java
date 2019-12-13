@@ -57,7 +57,7 @@ public class Ship extends Ellipse {
         return health;
     }
 
-    boolean shipDestruction() {
+    public boolean shipDestruction() {
         double left = asteroidsManager.testShipHit(X - WIDTH - 1, Y);
         if (left > 0) {
             //tests left side

@@ -1,4 +1,7 @@
 package AsteroidsGame;
+/**
+ * Graphics text that displays to the canvas the current score of the player.
+ */
 
 import comp127graphics.FontStyle;
 import comp127graphics.GraphicsGroup;
@@ -14,7 +17,12 @@ public class ScoreBar {
    private double width;
    private double height;
 
-
+    /**
+     * Creates the scorebar using GraphicsGroup and GraphicsText.
+     * @param manager
+     * @param width
+     * @param height
+     */
     public ScoreBar(AsteroidsManager manager, double width, double height){
         this.manager = manager;
         this.width = width;
@@ -27,14 +35,24 @@ public class ScoreBar {
         updateLayout();
     }
 
+    /**
+     * Changes the scorebar to the current score of the player.
+     */
     void update() {
         label.setText("Score: " + manager.getScore());
     }
 
+    /**
+     * Sets the position of the GraphicsText Object.
+     */
     private void updateLayout() {
         label.setCenter(width*.75, height*.05);
     }
 
+    /**
+     * Returns the graphics object that is inside the GraphicsGroup object created.
+     * @return group
+     */
     GraphicsObject getGraphics() {
         return group;
     }

@@ -1,4 +1,7 @@
 package AsteroidsGame;
+/**
+ * A ship that is drawn to the canvas to shoot the asteroids
+ */
 
 import comp127graphics.*;
 import java.awt.*;
@@ -13,7 +16,15 @@ public class Ship extends Ellipse {
     private Beam beam;
     CanvasWindow canvas;
 
-
+    /**
+     * Creates a ship with the Ellipse class in the comp127graphics package and its upper left is at (x,y).
+     * @param X
+     * @param Y
+     * @param asteroidsManager
+     * @param health
+     * @param beam
+     * @param canvas
+     */
     public Ship(double X, double Y, AsteroidsManager asteroidsManager, int health, Beam beam, CanvasWindow canvas) {
         super(X, Y, 70, 50);
         this.X = X;
@@ -26,6 +37,10 @@ public class Ship extends Ellipse {
         this.canvas = canvas;
     }
 
+    /**
+     * Updates the ships health after it is hit by an asteroid of a certain width that is passed in.
+     * @param width
+     */
     private void updateHealthHit (double width) {
         //health += asteroidsManager.testHitHealth(beam.getX2(), beam.getY2());
         if (width == 150){
@@ -53,11 +68,21 @@ public class Ship extends Ellipse {
 
     }
 
+    /**
+     * Returns the current health of the ship
+     * @return health
+     */
     int getHealth() {
         return health;
     }
 
-    public boolean shipDestruction() {
+    /**
+     * Tests 8 locations on the outside of the ship and tests the locations to see if they are being hit by an asteroid
+     * if the testShipHit method returns a double greater than zero than the updateHealthHit method is called for the
+     * width of the asteroid and returns true.
+     * @return boolean
+     */
+    boolean shipDestruction() {
         double left = asteroidsManager.testShipHit(X - WIDTH - 1, Y);
         if (left > 0) {
             //tests left side

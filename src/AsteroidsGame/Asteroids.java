@@ -12,8 +12,6 @@ import java.util.Random;
 public class Asteroids extends Ellipse{
     private double dX;
     private double dY;
-    private double xPos;
-    private double yPos;
 
     /**
      * Creates an ellipse whose upper left is at (x,y), and which has the specified width and height.
@@ -26,8 +24,8 @@ public class Asteroids extends Ellipse{
         super(x, y,width, width);
         setStrokeColor(Color.GRAY);
         setStrokeWidth(3);
-        setdX(Math.random()*2-1);   //picks random double between -1 and 1
-        setdY(Math.random()*2-1);
+        setdX((Math.random()*2-1)*1.5);   //picks random double between -1 and 1
+        setdY((Math.random()*2-1)*1.5);
 
     }
 
@@ -45,8 +43,8 @@ public class Asteroids extends Ellipse{
             setPosition(canvas.getWidth(), getY());
         }
 
-        xPos = getX() + getdX();
-        yPos = getY() + getdY();
+        double xPos = getX() + getdX();
+        double yPos = getY() + getdY();
         setPosition(xPos, yPos);
     }
 

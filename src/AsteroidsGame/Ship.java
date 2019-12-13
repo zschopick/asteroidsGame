@@ -13,8 +13,7 @@ public class Ship extends Ellipse {
     static final double WIDTH = 70;
     static final double HEIGHT = 50;
     private AsteroidsManager asteroidsManager;
-    private Beam beam;
-    CanvasWindow canvas;
+    private CanvasWindow canvas;
 
     /**
      * Creates a ship with the Ellipse class in the comp127graphics package and its upper left is at (x,y).
@@ -26,7 +25,7 @@ public class Ship extends Ellipse {
      * @param canvas
      */
     public Ship(double X, double Y, AsteroidsManager asteroidsManager,
-                int health, Beam beam, CanvasWindow canvas) {
+                int health,CanvasWindow canvas) {
         super(X, Y, 70, 50);
         this.X = X;
         this.Y = Y;
@@ -34,7 +33,6 @@ public class Ship extends Ellipse {
         this.health = health;
         this.asteroidsManager = asteroidsManager;
         setCenter(X, Y);
-        this.beam = beam;
         this.canvas = canvas;
     }
 

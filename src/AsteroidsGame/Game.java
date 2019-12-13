@@ -42,6 +42,7 @@ public class Game implements MouseListener, MouseMotionListener {
                     scoreBar.update();}
                 else{
                     System.out.println("You have died.");
+                    System.out.println("Your End Score: " + manager.getScore());
                     canvas.closeWindow();
                 }
             });
@@ -53,6 +54,7 @@ public class Game implements MouseListener, MouseMotionListener {
                 canvas.add(beam);
                 manager.testHit(beam.getX2(), beam.getY2());
                 hManager.testHitHealth(beam.getX2(), beam.getY2());
+
             });
             canvas.onMouseUp(event -> {
                 canvas.remove(beam);
@@ -66,7 +68,8 @@ public class Game implements MouseListener, MouseMotionListener {
          * Creates a ship at the center of the canvas.
          */
         private void createShip(){
-            ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100, beam, canvas);
+            ship = new Ship(CANVAS_WIDTH*.5, CANVAS_HEIGHT*.5,  manager, 100, canvas);
+
         }
 
         @Override

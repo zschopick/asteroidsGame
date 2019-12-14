@@ -36,14 +36,24 @@ class HealthBar {
         updateLayout();
     }
 
+    /**
+     * Sets the text of the label with the ships current health.
+     */
     void update() {
         label.setText("Health: " + ship.getHealth());
     }
 
+    /**
+     * Sets the position of the label.
+     */
     private void updateLayout() {
         label.setCenter(width*.075, height*.05);
     }
 
+    /**
+     * Gets the Graphics group object that includes the health Object.
+     * @return group
+     */
     GraphicsObject getGraphics() {
         return group;
     }

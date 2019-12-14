@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Class is responsible for creating all the asteroids on the screen as well managing when they are hit and split
+ * as well as keeping a certain amount of asteroids on the screen, which is passed to it by the level that the user chooses.
+ */
+
 class AsteroidsManager {
     private CanvasWindow canvas;
     private List<Asteroids> AsteroidList;
@@ -18,6 +23,14 @@ class AsteroidsManager {
     private List<Double> locationYList = new ArrayList<>();
     private int score;
 
+    /**
+     * Creates the asteroid manager object with instance variables canvas, score asteroidMax, and creates a new list of Asteroids,
+     * and creates a new list of random doubles that the asteroids are allowed to spawn at, the locations are made so that the
+     * asteroids don't spawn on the ship.
+     * @param canvas
+     * @param score
+     * @param asteroidMax
+     */
     AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax) {
         this.canvas = canvas;
         this.score = score;
@@ -51,7 +64,7 @@ class AsteroidsManager {
     }
 
     /**
-     *
+     *Creates an asteroid of half the size of the original asteroid shot at the x and y position of the original asteroid.
      */
     private void createSplitAsteroid(double width, double x, double y) {
         asteroid = new Asteroids(x, y, width / 2);
@@ -70,12 +83,22 @@ class AsteroidsManager {
         createAsteroid();
     }
 
+    /**
+     * Loops through the list of the asteroids and calls the update position method to move the asteroids.
+     */
     void moveAsteroids() {
         for (Asteroids a : AsteroidList) {
             a.updatePosition(canvas);
         }
     }
 
+    /**
+     * Takes in an x and y and uses those coordinates to get the element at that point on the canvas.
+     * Then checks to see if that object is an instance of an Asteroid. Then, checks if that asteroid hit
+     * has a certain width if it is one of the two larger sizes then calls the split method twice.
+     * @param x
+     * @param y
+     */
     void testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
@@ -93,6 +116,12 @@ class AsteroidsManager {
         }
     }
 
+    /**
+     *  Takes in an x and a y tests to see if that is an asteroid, then destoys the asteroid if it hits the ship.
+     * @param x
+     * @param y
+     * @return Asteroid width.
+     */
     double testShipHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
         if (location instanceof Asteroids) {
@@ -103,10 +132,20 @@ class AsteroidsManager {
         }
     }
 
+    /**
+     * Returns the score of the player
+     * @return Score
+     */
     double getScore() {
         return score;
     }
 
+    /**
+     * Checks the width of the asteroid then creates a split asteroid at the same x, y position and updates the score.
+     * @param width
+     * @param x
+     * @param y
+     */
     private void split(double width, double x, double y) {
         if (width == 150) {
             score += 50;

@@ -24,12 +24,12 @@ class AsteroidsManager {
     private int score;
 
     /**
-     * Creates the asteroid manager object with instance variables canvas, score asteroidMax, and creates a new list of Asteroids,
-     * and creates a new list of random doubles that the asteroids are allowed to spawn at, the locations are made so that the
-     * asteroids don't spawn on the ship.
-     * @param canvas
-     * @param score
-     * @param asteroidMax
+     * Creates the asteroid manager object with instance variables canvas, score asteroidMax,
+     * and creates a new list of Asteroids, and creates a new list of random doubles that the
+     * asteroids are allowed to spawn at, the locations are made so that the asteroids don't spawn on the ship.
+     * @param canvas    the canvasWindow the AsteroidsManager interacts with
+     * @param score     the score starting at 0
+     * @param asteroidMax   the number of asteroid that spawn on the canvas
      */
     AsteroidsManager(CanvasWindow canvas, int score, int asteroidMax) {
         this.canvas = canvas;
@@ -96,8 +96,6 @@ class AsteroidsManager {
      * Takes in an x and y and uses those coordinates to get the element at that point on the canvas.
      * Then checks to see if that object is an instance of an Asteroid. Then, checks if that asteroid hit
      * has a certain width if it is one of the two larger sizes then calls the split method twice.
-     * @param x
-     * @param y
      */
     void testHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
@@ -117,10 +115,8 @@ class AsteroidsManager {
     }
 
     /**
-     *  Takes in an x and a y tests to see if that is an asteroid, then destoys the asteroid if it hits the ship.
-     * @param x
-     * @param y
-     * @return Asteroid width.
+     *  Takes in an x and a y tests to see if that is an asteroid,
+     *  then destroys the asteroid if it hits the ship.
      */
     double testShipHit(double x, double y) {
         GraphicsObject location = canvas.getElementAt(x, y);
@@ -134,7 +130,6 @@ class AsteroidsManager {
 
     /**
      * Returns the score of the player
-     * @return Score
      */
     double getScore() {
         return score;
@@ -142,9 +137,9 @@ class AsteroidsManager {
 
     /**
      * Checks the width of the asteroid then creates a split asteroid at the same x, y position and updates the score.
-     * @param width
-     * @param x
-     * @param y
+     * @param width     width of asteroid hit by beam
+     * @param x     x position to create split asteroid
+     * @param y     y position to create split asteroid
      */
     private void split(double width, double x, double y) {
         if (width == 150) {

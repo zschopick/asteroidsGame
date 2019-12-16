@@ -38,3 +38,6 @@ Tested to see that the game ended once the score reached 0.
 
 Tested to make sure none of the asteroids were created in the proximity of the ship.
 
+Tested to make sure asteroids could not pass through ship without alarming 
+one of the boundaries.
+

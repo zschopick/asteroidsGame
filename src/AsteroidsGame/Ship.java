@@ -1,30 +1,25 @@
 package AsteroidsGame;
-/**
- * A ship that is drawn to the canvas to shoot the asteroids
- */
 
 import comp127graphics.*;
 import java.awt.*;
 
+/**
+ * A ship that is drawn to the canvas to shoot the asteroids
+ */
 public class Ship extends Ellipse {
     private final double X;
     private final double Y;
     private int health;
-    static final double WIDTH = 70;
-    static final double HEIGHT = 50;
+    private static final double WIDTH = 70;
+    private static final double HEIGHT = 50;
     private AsteroidsManager asteroidsManager;
     private CanvasWindow canvas;
 
     /**
      * Creates a ship with the Ellipse class in the comp127graphics package and its upper left is at (x,y).
-     * @param X
-     * @param Y
-     * @param asteroidsManager
-     * @param health
-     * @param canvas
      */
-    public Ship(double X, double Y, AsteroidsManager asteroidsManager,
-                int health,CanvasWindow canvas) {
+    Ship(double X, double Y, AsteroidsManager asteroidsManager,
+         int health, CanvasWindow canvas) {
         super(X, Y, 70, 50);
         this.X = X;
         this.Y = Y;
@@ -37,7 +32,7 @@ public class Ship extends Ellipse {
 
     /**
      * Updates the ships health after it is hit by an asteroid of a certain width that is passed in.
-     * @param width
+     * @param width     intakes the width of the asteroid that hit the ship
      */
     private void updateHealthHit (double width) {
         if (width == 150){

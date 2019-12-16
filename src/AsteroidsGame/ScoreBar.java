@@ -1,7 +1,5 @@
 package AsteroidsGame;
-/**
- * Graphics text that displays to the canvas the current score of the player.
- */
+
 
 import comp127graphics.FontStyle;
 import comp127graphics.GraphicsGroup;
@@ -9,8 +7,11 @@ import comp127graphics.GraphicsObject;
 import comp127graphics.GraphicsText;
 
 import java.awt.*;
+/**
+ * Graphics text that displays to the canvas the current score of the player.
+ */
 
-public class ScoreBar {
+class ScoreBar {
     private GraphicsGroup group;
     private GraphicsText label;
     private AsteroidsManager manager;
@@ -19,11 +20,8 @@ public class ScoreBar {
 
     /**
      * Creates the scorebar using GraphicsGroup and GraphicsText.
-     * @param manager
-     * @param width
-     * @param height
      */
-    public ScoreBar(AsteroidsManager manager, double width, double height){
+    ScoreBar(AsteroidsManager manager, double width, double height){
         this.manager = manager;
         this.width = width;
         this.height = height;

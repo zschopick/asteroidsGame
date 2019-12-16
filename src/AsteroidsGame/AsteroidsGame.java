@@ -1,30 +1,25 @@
 package AsteroidsGame;
 
 import comp127graphics.*;
-import comp127graphics.Image;
 import comp127graphics.ui.Button;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+/**
+ * @author Hayley Hadges, Zoe Schopick, Jake Bulling
+ */
+
 class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionListener {
     private static int level = 5;
-    private CanvasWindow startCanvas;
     private final int CANVAS_WIDTH = 1000;
     private final int CANVAS_HEIGHT = 800;
-    private Button easy;
-    private Button medium;
-    private Button hard;
-    private GraphicsGroup group;
 
     private GraphicsText gameTitle;
     private GraphicsText des1;
     private GraphicsText des2;
     private GraphicsText des3;
-    private Button start;
-
-    private Image asteroidImage;
 
     public AsteroidsGame() {
         createStartPage();
@@ -34,9 +29,7 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         new AsteroidsGame();
     }
 
-    public void update() {
-       // asteroidImage.setImagePath("res/meteor.png");
-        asteroidImage.setPosition(CANVAS_WIDTH * .1, CANVAS_HEIGHT * .3);
+    private void update() {
         gameTitle.setText("ASTEROIDS");
         gameTitle.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.2);
         des1.setText("In the game Asteroids, shoot down as many asteroids as possible to gain points--");
@@ -47,38 +40,33 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         des3.setCenter(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.76);
     }
 
-    void createStartPage(){
-        startCanvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
+    private void createStartPage(){
+        CanvasWindow startCanvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
         Color color = new Color (44, 50, 120);
         startCanvas.setBackground(color);
 
-        group = new GraphicsGroup();
+        GraphicsGroup group = new GraphicsGroup();
         startCanvas.add(group);
 
-        start = new Button("START");
+        Button start = new Button("START");
         start.setCenter(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5);
         start.onClick(() -> new Game());
         group.add(start);
 
-        easy = new Button("EASY");
+        Button easy = new Button("EASY");
         easy.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .45);
         easy.onClick(() -> level = 10);
         group.add(easy);
 
-        medium = new Button("MEDIUM");
+        Button medium = new Button("MEDIUM");
         medium.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .5);
         medium.onClick(() -> level = 15);
         group.add(medium);
 
-        hard = new Button("HARD");
+        Button hard = new Button("HARD");
         hard.setCenter(CANVAS_WIDTH * .8, CANVAS_HEIGHT * .55);
         hard.onClick(() -> level = 20);
         group.add(hard);
-
-        asteroidImage = new Image(CANVAS_WIDTH * .4, CANVAS_HEIGHT * .3, "res/meteor.png");
-        asteroidImage.setMaxWidth(CANVAS_WIDTH * .85);
-        asteroidImage.setMaxHeight(CANVAS_HEIGHT * .85);
-        group.add(asteroidImage);
 
         gameTitle = new GraphicsText();
         group.add(gameTitle);

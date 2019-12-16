@@ -21,7 +21,6 @@ public class Ship extends Ellipse {
      * @param Y
      * @param asteroidsManager
      * @param health
-     * @param beam
      * @param canvas
      */
     public Ship(double X, double Y, AsteroidsManager asteroidsManager,

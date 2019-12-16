@@ -6,10 +6,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+
+/**
+ * Class is responsible for creating the canvas that the game runs on, adds everything to
+ * the canvas and animates it
+ */
 public class Game implements MouseListener, MouseMotionListener {
         private CanvasWindow canvas;
         private AsteroidsManager manager;
-        private HealthObjsManager hManager;
         private Ship ship;
         private HealthBar healthBar;
         private ScoreBar scoreBar;
@@ -17,20 +21,27 @@ public class Game implements MouseListener, MouseMotionListener {
         private final int CANVAS_HEIGHT = 800;
         private Beam beam;
 
+    /**
+     * Creates a new canvas, a new asteroid manager, and a new score bar.
+     * Sets the canvas to black and calls the run method.
+     */
         Game(){
             canvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
             manager = new AsteroidsManager(canvas, 0, AsteroidsGame.getLevel());
             scoreBar = new ScoreBar(manager,CANVAS_WIDTH, CANVAS_HEIGHT);
-            hManager = new HealthObjsManager(canvas, ship);
             canvas.setBackground(Color.black);
             run();
 
         }
 
-
+    /**
+     * Creates asteroids and ship and adds them to the canvas. Checks the health of the ship
+     * and animates the elements if the health is greater than 0. Creates a beam on a mouse down
+     * click and removes it on a mouse release
+     */
     private void run(){
             manager.createAsteroid();
-            hManager.createHealthObj();
+
             createShip();
             canvas.add(ship);
             healthBar = new HealthBar(ship, CANVAS_WIDTH,CANVAS_HEIGHT);
@@ -53,7 +64,7 @@ public class Game implements MouseListener, MouseMotionListener {
                         MouseInfo.getPointerInfo().getLocation().getY());
                 canvas.add(beam);
                 manager.testHit(beam.getX2(), beam.getY2());
-                hManager.testHitHealth(beam.getX2(), beam.getY2());
+
 
             });
             canvas.onMouseUp(event -> {

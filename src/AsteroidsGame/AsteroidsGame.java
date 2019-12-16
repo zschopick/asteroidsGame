@@ -29,6 +29,10 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         new AsteroidsGame();
     }
 
+    /**
+     * Updates all the graphics text objects to say what we want them to and then sets their positions on the
+     * canvas.
+     */
     private void update() {
         gameTitle.setText("ASTEROIDS");
         gameTitle.setCenter(CANVAS_WIDTH * 0.48, CANVAS_HEIGHT * 0.2);
@@ -40,6 +44,10 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         des3.setCenter(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.76);
     }
 
+    /**
+     * Creates a new canvas with buttons for easy, medium and hard modes and a start button as well as
+     * directions for the game.
+     */
     private void createStartPage(){
         CanvasWindow startCanvas = new CanvasWindow("Asteroids!", CANVAS_WIDTH, CANVAS_HEIGHT);
         Color color = new Color (44, 50, 120);
@@ -91,6 +99,9 @@ class AsteroidsGame extends GraphicsGroup implements MouseListener, MouseMotionL
         update();
     }
 
+    /**
+     * Gets the level the user chose.
+     */
     static int getLevel(){
         return level;
     }

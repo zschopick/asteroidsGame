@@ -29,6 +29,11 @@ public class Asteroids extends Ellipse{
 
     }
 
+    /**
+     * If the asteroid is flying out of the side or top of the canvas, method sets its position to appear on the other side of the canvas.
+     * Also is responsible for changing the x position and y position of the asteroid.
+     * @param canvas
+     */
     void updatePosition(CanvasWindow canvas){
         if (getY() > canvas.getHeight()){
             setPosition(getX(), 0);
@@ -48,19 +53,32 @@ public class Asteroids extends Ellipse{
         setPosition(xPos, yPos);
     }
 
+    /**
+     * Gives the current x speed of the asteroid
+     * @return dX
+     */
     private double getdX() {
         return dX;
     }
 
-
+    /**
+     * Sets the x speed of the asteroid
+     * @param dX
+     */
     private void setdX(double dX) {
         this.dX = dX;
     }
-
+    /**
+     * Sets the y speed of the asteroid
+     * @param dY
+     */
     private void setdY(double dY){
         this.dY = dY;
     }
-
+    /**
+     * Gives the current y speed of the asteroid
+     * @return dX=Y
+     */
     private double getdY() {
         return dY;
     }
